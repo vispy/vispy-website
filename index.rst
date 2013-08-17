@@ -36,10 +36,16 @@ visit our `gallery </docs/dev/auto_examples>`__.
 
       ::
 
-        from vispy import app, gl, oogl
+        from vispy import app, gl
 
-        c = Canvas()
-         ... etc
+        c = app.Canvas(show=True)
+
+        @c.connect
+        def on_paint(event):
+            gl.glClearColor(0,1,0,1)
+            gl.glClear(gl.GL_COLOR_BUFFER_BIT)
+
+        app.run()
 
 
 
@@ -51,9 +57,4 @@ Announcements
 - **Release!** Version 0.1.0 14-08-2013
 
 
-Developers
-----------
-
-- `Pull requests <https://github.com/vispy/vispy/pulls>`__
-- `Bug reports <https://github.com/vispy/vispy/issues>`__
 
