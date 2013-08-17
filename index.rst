@@ -27,8 +27,8 @@
 Getting Started
 ---------------
 
-Visualization with ``vispy`` is easy!  For more examples, please
-visit our `gallery </docs/dev/auto_examples>`__.
+Visualization with ``vispy`` is easy!  For more code samples, please
+visit our `examples <http://api.vispy.org/en/latest/examples.html>`__.
 
 
 .. container:: row-fluid
