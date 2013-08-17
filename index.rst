@@ -30,6 +30,7 @@ Getting Started
 Visualization with ``vispy`` is easy!  For more examples, please
 visit our `gallery </docs/dev/auto_examples>`__.
 
+
 .. container:: row-fluid
 
    .. container:: span6
