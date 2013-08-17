@@ -31,11 +31,11 @@ abstraction and generality.
 
 Vispy is organized in layers:
 
-  # Low level OpenGL API
-  # Object oriented OpenGL API
-  # Visuals layer
-  # Functional interface
-  # ... something with big data?
+#. Low level OpenGL API
+#. Object oriented OpenGL API
+#. Visuals layer
+#. Functional interface
+#. ... something with big data?
  
 Vispy can be a basis for other libraries, which can hook into vispy at the desired level.
 But vispy also aims to be a visualziation toolkit on its own (e.g. level 4).
