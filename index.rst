@@ -24,6 +24,26 @@
       <i class="icon-download icon-white"></i>Download</a>
 
 
+Vispy is a collaborative project that has the goal to allow more sharing 
+of code between visualization projects based on OpenGL. It does this 
+by providing powerful interfaces to OpenGL, at different levels of 
+abstraction and generality.
+
+Vispy is organized in layers:
+
+  # Low level OpenGL API
+  # Object oriented OpenGL API
+  # Visuals layer
+  # Functional interface
+  # ... something with big data?
+ 
+Vispy can be a basis for other libraries, which can hook into vispy at the desired level.
+But vispy also aims to be a visualziation toolkit on its own (e.g. level 4).
+
+Currently, layer 1 and 2 are in Beta stage, work on layer 3 is commencing.
+
+
+
 Getting Started
 ---------------
 
