@@ -25,28 +25,25 @@
 
 
 Vispy is a collaborative project that has two main goals: 
-  
-  1) To allow more sharing of code between visualization projects 
-  and making it easier to use OpenGL. This is doen by providing an 
-  object oriented interface to OpenGL and by providing a framework for 
-  embedding OpenGL in applications and the browser.
-  
-  2) To create fast, interactive and beautiful (i.e. high quality) 
-  visualizations, using a high level interface. Also for big data.
+1) To allow more sharing of code between visualization projects 
+and making it easier to use OpenGL. 
+2) To create fast, interactive and beautiful (i.e. high quality) 
+visualizations, using a high level interface. Also for big data.
+Also in the browser.
 
-Vispy is organized in the following modules. The visualisation modules 
-are organized in levels, that provide API's at increasing abstraction.
+Vispy is organized in the following modules:
 
-* vispy.gl: (level 1) low level OpenGL API 
-* vispy.oogl: (level 2) object oriented OpenGL API
-* vispy.visuals: (level 3) visuals layer (higher level visualization objects)
-* To come: (level 4) Functional interface
-* (level 5)... something with big data?
-* vispy.app: simple application framework for creating/embedding OpenGL widgets
-* vispy.event: event system.
+* **vispy.gl**: low level OpenGL API (level 1)
+* **vispy.oogl**: object oriented OpenGL API (level 2)
+* **vispy.visuals**: visuals layer (level 3)
+* To come: functional interface (level 4) 
+* ... something with big data? (level 5)
+* **vispy.app**: simple application framework for creating/embedding OpenGL widgets
+* **vispy.event**: event system.
  
-Vispy can be a basis for other libraries, which can hook into vispy at the desired level.
-But vispy also aims to be a visualziation toolkit on its own.
+The visualisation modules are organized in levels that provide API's 
+to OpenGL at increasing abstraction. Libraries and applications that
+use vispy can use it at the desired level.
 
 Currently, layer 1 and 2 are in Beta stage, work on layer 3 is commencing.
 
