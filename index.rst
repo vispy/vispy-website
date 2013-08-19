@@ -25,11 +25,10 @@
 
 
 Vispy is a collaborative project that has two main goals: 
-1) To allow more sharing of code between visualization projects 
-and making it easier to use OpenGL. 
+1) To make it easier to use OpenGL (also in the browser) 
+and allow more sharing of code between visualization projects. 
 2) To create fast, interactive and beautiful (i.e. high quality) 
-visualizations, using a high level interface. Also for big data.
-Also in the browser.
+visualizations, using a high level interface (also for big data).
 
 Vispy is organized in the following modules:
 
@@ -41,8 +40,8 @@ Vispy is organized in the following modules:
 * **vispy.app**: simple application framework for creating/embedding OpenGL widgets
 * **vispy.event**: event system.
  
-The visualisation modules are organized in levels that provide API's 
-to OpenGL at increasing abstraction. Libraries and applications that
+The visualisation modules are organized in levels that provide API's at 
+increasing abstraction. Libraries and applications that
 use vispy can use it at the desired level.
 
 Currently, layer 1 and 2 are in Beta stage, work on layer 3 is commencing.
