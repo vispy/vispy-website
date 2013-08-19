@@ -68,7 +68,8 @@ visit our `examples <http://api.vispy.org/en/latest/examples.html>`__.
    .. container:: span6
 
       ::
-
+        
+        # Note that this needs vispy version > 0.1.0
         from vispy import app, gl
 
         c = app.Canvas(show=True)
