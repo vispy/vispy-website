@@ -48,6 +48,14 @@ Currently, layer 1 and 2 are in Beta stage, work on layer 3 is commencing.
 
 
 
+Announcements
+-------------
+
+- **Presentation at Euroscipy**, Belgium, August 2013
+- **EuroSciPy Sprint**, Belgium, August 2013
+- **Release!** Version 0.1.0 14-08-2013
+
+
 Getting Started
 ---------------
 
@@ -74,12 +82,14 @@ visit our `examples <http://api.vispy.org/en/latest/examples.html>`__.
 
 
 
-Announcements
--------------
+Installation
+------------
 
-- **Presentation at Euroscipy**, Belgium, August 2013
-- **EuroSciPy Sprint**, Belgium, August 2013
-- **Release!** Version 0.1.0 14-08-2013
+Vispy runs on Python 2.6 and higher, including Python 3. 
+Vispy depends on Numpy and PyOpenGL.
+
+Since Vispy is pure Python, installation is easy: ``pip install vispy``. 
+Alternatively, you can get the source and run ``python setup.py install``.
 
 
 
