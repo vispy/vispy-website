@@ -29,7 +29,9 @@ from subprocess import Popen, PIPE, CalledProcessError, check_call
 
 pages_dir = 'gh-pages'
 html_dir = '_build/html'
-pages_repo = 'https://github.com/vispy/vispy.github.com.git'
+#pages_repo = 'https://github.com/vispy/vispy.github.com.git'
+pages_repo = 'git@github.com:vispy/vispy.github.com.git'
+
 
 #-----------------------------------------------------------------------------
 # Functions
