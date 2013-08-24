@@ -60,7 +60,7 @@ Getting Started
 ---------------
 
 Visualization with ``vispy`` is easy!  For more code samples, please
-visit our `examples <http://api.vispy.org/en/latest/examples.html>`__.
+visit the examples section in the `documentation <http://vispy.readthedocs.org>`__.
 
 
 .. container:: row-fluid
