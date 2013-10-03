@@ -30,31 +30,6 @@ and allow more sharing of code between visualization projects.
 2) To create fast, interactive and beautiful (i.e. high quality) 
 visualizations, using a high level interface (also for big data).
 
-Vispy is organized in the following modules:
-
-* **vispy.gl**: low level OpenGL API (level 1)
-* **vispy.oogl**: object oriented OpenGL API (level 2)
-* **vispy.visuals**: visuals layer (level 3)
-* To come: functional interface (level 4) 
-* ... something with big data? (level 5)
-* **vispy.app**: simple application framework for creating/embedding OpenGL widgets
-* **vispy.event**: event system.
- 
-The visualisation modules are organized in levels that provide API's at 
-increasing abstraction. Libraries and applications that
-use vispy can use it at the desired level.
-
-Currently, layer 1 and 2 are in Beta stage, work on layer 3 is commencing.
-
-
-
-Announcements
--------------
-
-- **Presentation at Euroscipy**, Belgium, August 2013
-- **EuroSciPy Sprint**, Belgium, August 2013
-- **Release!** Version 0.1.0 14-08-2013
-
 
 Getting Started
 ---------------
@@ -82,6 +57,33 @@ visit the examples section in the `documentation <http://vispy.readthedocs.org>`
         app.run()
 
 
+Announcements
+-------------
+
+- **Presentation at BI forum**, Budapest, 6 November 2013
+- **Presentation at Euroscipy**, Belgium, August 2013
+- **EuroSciPy Sprint**, Belgium, August 2013
+- **Release!** Version 0.1.0 14-08-2013
+
+
+Organization
+------------
+Vispy is organized in the following modules:
+
+* **vispy.gl**: low level OpenGL API (level 1)
+* **vispy.oogl**: object oriented OpenGL API (level 2)
+* **vispy.visuals**: visuals layer (level 3)
+* To come: functional interface (level 4) 
+* ... something with big data? (level 5)
+* **vispy.app**: simple application framework for creating/embedding OpenGL widgets
+* **vispy.event**: event system.
+ 
+The visualisation modules are organized in levels that provide API's at 
+increasing abstraction. Libraries and applications that
+use vispy can use it at the desired level.
+
+Currently, layer 1 and 2 are in Beta stage, work on layer 3 is commencing.
+
 
 Installation
 ------------
@@ -92,5 +94,23 @@ Vispy depends on Numpy and PyOpenGL.
 Since Vispy is pure Python, installation is easy: ``pip install vispy``. 
 Alternatively, you can get the source and run ``python setup.py install``.
 
+
+About us
+--------
+
+The core development team consists of Luke Campagnola, Almar Klein,
+Nicolas Rougier and Cyrille Rossant. We have each written our own Python
+visualization toolkit (PyQtGraph, Visvis, Glumpy and Galry,
+respectively), and decided to team-up.
+
+Vispy will eventually replace all of our visualization libraries, so
+you can expect vispy to have all the features of our respective toolkits
+combined, and more.
+
+
+Publications on Vispy 
+---------------------
+
+* `Presentation at EuroScipy 2013 <https://github.com/vispy/static/raw/master/vispy-euroscipy-2013.pdf>`_
 
 
