@@ -45,14 +45,15 @@ visit the examples section in the `documentation <http://vispy.readthedocs.org>`
       ::
         
         # Note that this needs vispy version > 0.1.0
-        from vispy import app, gloo
+        from vispy import app
+        from vispy.gloo import gl
 
         c = app.Canvas(show=True)
 
         @c.connect
         def on_paint(event):
-            gloo.gl.glClearColor(0,1,0,1)
-            gloo.gl.glClear(gl.GL_COLOR_BUFFER_BIT)
+            gl.glClearColor(0,1,0,1)
+            gl.glClear(gl.GL_COLOR_BUFFER_BIT)
 
         app.run()
 
