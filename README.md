@@ -1,4 +1,4 @@
-pyvis-website
+vispy-website
 =============
 
 Website sources

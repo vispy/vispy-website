@@ -45,14 +45,14 @@ visit the examples section in the `documentation <http://vispy.readthedocs.org>`
       ::
         
         # Note that this needs vispy version > 0.1.0
-        from vispy import app, gl
+        from vispy import app, gloo
 
         c = app.Canvas(show=True)
 
         @c.connect
         def on_paint(event):
-            gl.glClearColor(0,1,0,1)
-            gl.glClear(gl.GL_COLOR_BUFFER_BIT)
+            gloo.gl.glClearColor(0,1,0,1)
+            gloo.gl.glClear(gl.GL_COLOR_BUFFER_BIT)
 
         app.run()
 
@@ -70,19 +70,15 @@ Organization
 ------------
 Vispy is organized in the following modules:
 
-* **vispy.gl**: low level OpenGL API (level 1)
-* **vispy.oogl**: object oriented OpenGL API (level 2)
-* **vispy.visuals**: visuals layer (level 3)
-* To come: functional interface (level 4) 
-* ... something with big data? (level 5)
 * **vispy.app**: simple application framework for creating/embedding OpenGL widgets
-* **vispy.event**: event system.
+* **vispy.gloo.gl**: low level OpenGL API 
+* **vispy.gloo**: object oriented OpenGL API
+* **vispy.visuals**: visuals layer (planned)
+* **vispy.pyplot**: functional interface (planned)
  
 The visualisation modules are organized in levels that provide API's at 
 increasing abstraction. Libraries and applications that
 use vispy can use it at the desired level.
-
-Currently, layer 1 and 2 are in Beta stage, work on layer 3 is commencing.
 
 
 Installation
