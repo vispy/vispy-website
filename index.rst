@@ -61,6 +61,7 @@ visit the examples section in the `documentation <http://vispy.readthedocs.org>`
 Announcements
 -------------
 
+- **Release!**, Version 0.2.1 04-11-2013
 - **Presentation at BI forum**, Budapest, 6 November 2013
 - **Presentation at Euroscipy**, Belgium, August 2013
 - **EuroSciPy Sprint**, Belgium, August 2013
@@ -72,7 +73,7 @@ Organization
 Vispy is organized in the following modules:
 
 * **vispy.app**: simple application framework for creating/embedding OpenGL widgets
-* **vispy.gloo.gl**: low level OpenGL API 
+* **vispy.util**: Various utilities, mostly for internal use
 * **vispy.gloo**: object oriented OpenGL API
 * **vispy.visuals**: visuals layer (planned)
 * **vispy.pyplot**: functional interface (planned)
