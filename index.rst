@@ -24,11 +24,40 @@
       <i class="icon-download icon-white"></i>Download</a>
 
 
-Vispy is an **OpenGL-based interactive visualization library in Python**. Its goal is to make it easy to create beautiful and fast dynamic visualizations. In particular, it will eventually ship with a **scientific plotting** library that will scale to tens of millions of points thanks to the graphics card's hardware acceleration.
+Vispy is an **OpenGL-based interactive visualization library in
+Python**. Its goal is to make it easy to create beautiful and fast
+dynamic visualizations. For example, **scientific plotting** of tens
+of millions of points, interacting with complex polygonial models, and
+(dynamic) volume rendering. All thanks to the graphics card's hardware
+acceleration.
 
-**Vispy is currently an alpha-quality software**. Vispy will eventually offer graphical APIs at multiple levels, including a matplotlib-like scientific plotting library. Currently, only the lowest-level API is implemented: it brings an easy-to-use Pythonic object-oriented interface to OpenGL. This layer requires you to have basic knowledge of modern OpenGL (notably the OpenGL shading language, GLSL). For this reason, **Vispy is not yet suitable for the general scientist, but it will be in the future** (in several months at the very least).
 
-We are currently working on higher level layers. They will hide most OpenGL concepts and let you create beautiful visualizations in a few lines of code. Stay tuned!
+Status
+------
+
+Vispy will eventually offer graphical APIs at multiple levels, including
+a matplotlib-like scientific plotting library. Currently, only the
+lowest-level API is implemented: it brings an easy-to-use Pythonic
+object-oriented interface to OpenGL. This layer requires you to have
+basic knowledge of modern OpenGL (notably the OpenGL shading language,
+GLSL). 
+
+For this reason, 
+**Vispy is not yet suitable for the general scientist, but it will be in the future** 
+(in several months at the very least).
+We are currently working on higher level layers. They will hide most
+OpenGL concepts and let you create beautiful visualizations in a few
+lines of code. Stay tuned!
+
+
+Announcements
+-------------
+
+- **Release!**, Version 0.2.1 04-11-2013
+- **Presentation at BI forum**, Budapest, 6 November 2013
+- **Presentation at Euroscipy**, Belgium, August 2013
+- **EuroSciPy Sprint**, Belgium, August 2013
+- **Release!** Version 0.1.0 14-08-2013
 
 
 Getting Started
@@ -58,16 +87,6 @@ visit the examples section in the `documentation <http://vispy.readthedocs.org>`
         app.run()
 
 
-Announcements
--------------
-
-- **Release!**, Version 0.2.1 04-11-2013
-- **Presentation at BI forum**, Budapest, 6 November 2013
-- **Presentation at Euroscipy**, Belgium, August 2013
-- **EuroSciPy Sprint**, Belgium, August 2013
-- **Release!** Version 0.1.0 14-08-2013
-
-
 Organization
 ------------
 Vispy is organized in the following modules:
@@ -77,10 +96,13 @@ Vispy is organized in the following modules:
 * **vispy.gloo**: object oriented OpenGL API
 * **vispy.visuals**: visuals layer (planned)
 * **vispy.pyplot**: functional interface (planned)
- 
+
 The visualisation modules are organized in levels that provide API's at 
 increasing abstraction. Libraries and applications that
 use vispy can use it at the desired level.
+
+``vispy.app`` and ``vispy.gloo`` are currently in beta stage; we try to
+keep the API's stable, but may introduce small changes.
 
 
 Installation
