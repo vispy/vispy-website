@@ -53,6 +53,7 @@ lines of code. Stay tuned!
 Announcements
 -------------
 
+- **GSoC 2014**: `we're looking for students! <https://github.com/vispy/vispy/wiki/Project.%20GSoC-2014>`__
 - **Release!**, Version 0.2.1 04-11-2013
 - **Presentation at BI forum**, Budapest, 6 November 2013
 - **Presentation at Euroscipy**, Belgium, August 2013
