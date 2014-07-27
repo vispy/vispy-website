@@ -14,7 +14,7 @@
         </script>
       </div>
 
-      <h2>Image processing in Python</h2>
+      <h2>High-performance interactive data visualization in Python</h2>
 
     lalala some text
 
@@ -24,36 +24,26 @@
       <i class="icon-download icon-white"></i>Download</a>
 
 
-Vispy is an **OpenGL-based interactive visualization library in
-Python**. Its goal is to make it easy to create beautiful and fast
-dynamic visualizations. For example, **scientific plotting** of tens
-of millions of points, interacting with complex polygonial models, and
-(dynamic) volume rendering. All thanks to the graphics card's hardware
-acceleration.
+Vispy is a **high-performance interactive 2D/3D data visualization library**. 
+Vispy leverages the computational power of modern 
+**Graphics Processing Units (GPUs)** through the **OpenGL** library to 
+display very large datasets. Applications of Vispy include:
 
+* High-quality interactive scientific plots with tens of millions of points.
+* Direct visualization of real-time data.
+* Fast interactive visualization of 3D models (meshes, volume rendering).
+* OpenGL visualization demos.
+* Scientific GUIs with fast, scalable visualization widgets (Qt or IPython notebook with WebGL).
 
-Status
-------
-
-Vispy will eventually offer graphical APIs at multiple levels, including
-a matplotlib-like scientific plotting library. Currently, only the
-lowest-level API is implemented: it brings an easy-to-use Pythonic
-object-oriented interface to OpenGL. This layer requires you to have
-basic knowledge of modern OpenGL (notably the OpenGL shading language,
-GLSL). 
-
-For this reason, 
-**Vispy is not yet suitable for the general scientist, but it will be in the future** 
-(in several months at the very least).
-We are currently working on higher level layers. They will hide most
-OpenGL concepts and let you create beautiful visualizations in a few
-lines of code. Stay tuned!
+**Important note**. As of today (July 2014), using Vispy requires knowing OpenGL. Within the next few weeks, we will offer higher-level graphical interfaces that allow for the creation of visualizations without any knowledge of OpenGL.
 
 
 Announcements
 -------------
 
-- **GSoC 2014**: `we're looking for students! <https://github.com/vispy/vispy/wiki/Project.%20GSoC-2014>`__
+- **EuroSciPy 2014**: talk and sprint, August 2014
+- `Article in **Linux Magazine**, French Edition <https://github.com/vispy/linuxmag-article>`__, July 2014
+- **GSoC 2014**: `two GSoC students are currently working on Vispy under the PSF umbrella <https://github.com/vispy/vispy/wiki/Project.%20GSoC-2014>`__
 - **Release!**, Version 0.2.1 04-11-2013
 - **Presentation at BI forum**, Budapest, 6 November 2013
 - **Presentation at Euroscipy**, Belgium, August 2013
@@ -61,76 +51,30 @@ Announcements
 - **Release!** Version 0.1.0 14-08-2013
 
 
-Getting Started
----------------
-
-Visualization with ``vispy`` is easy!  For more code samples, please
-visit the examples section in the `documentation <http://vispy.readthedocs.org>`__.
-
-
-.. container:: row-fluid
-
-   .. container:: span6
-
-      ::
-        
-        # Note that this needs vispy version > 0.1.0
-        from vispy import app
-        from vispy.gloo import gl
-
-        c = app.Canvas(show=True)
-
-        @c.connect
-        def on_paint(event):
-            gl.glClearColor(0,1,0,1)
-            gl.glClear(gl.GL_COLOR_BUFFER_BIT)
-
-        app.run()
-
-
-Organization
-------------
-Vispy is organized in the following modules:
-
-* **vispy.app**: simple application framework for creating/embedding OpenGL widgets
-* **vispy.util**: Various utilities, mostly for internal use
-* **vispy.gloo**: object oriented OpenGL API
-* **vispy.visuals**: visuals layer (planned)
-* **vispy.pyplot**: functional interface (planned)
-
-The visualisation modules are organized in levels that provide API's at 
-increasing abstraction. Libraries and applications that
-use vispy can use it at the desired level.
-
-``vispy.app`` and ``vispy.gloo`` are currently in beta stage; we try to
-keep the API's stable, but may introduce small changes.
-
-
 Installation
 ------------
 
-Vispy runs on Python 2.6 and higher, including Python 3. 
-Vispy depends on Numpy and PyOpenGL.
+Vispy runs on Python 2.6+ and Python 3.3+ and depends on Numpy and PyOpenGL.
 
-Since Vispy is pure Python, installation is easy: ``pip install vispy``. 
-Alternatively, you can get the source and run ``python setup.py install``.
+As Vispy is under heavy development at this time, we highly recommend you to use the `development version on Github <https://github.com/vispy/vispy>`__ (master branch). You need to clone the repository and install Vispy with ``python setup.py install``.
 
 
 About us
 --------
 
 The core development team consists of Luke Campagnola, Almar Klein,
-Nicolas Rougier and Cyrille Rossant. We have each written our own Python
-visualization toolkit (PyQtGraph, Visvis, Glumpy and Galry,
-respectively), and decided to team-up.
+Nicolas Rougier, Eric Larson, Cyrille Rossant. Four of us have written our own 
+Python visualization toolkit (PyQtGraph, Visvis, Glumpy and Galry), and 
+we decided to team-up to create a unique high-performance, high-quality 
+interactive visualization library.
 
-Vispy will eventually replace all of our visualization libraries, so
-you can expect vispy to have all the features of our respective toolkits
-combined, and more.
+* `User mailing list <https://groups.google.com/forum/#!forum/vispy>`__
+* `Dev mailing list <https://groups.google.com/forum/#!forum/vispy-dev>`__
+* `Dev chat room <https://gitter.im/vispy/vispy>`__
 
 
-Publications around Vispy
--------------------------
+Publications
+------------
 
 * `Hardware-accelerated interactive data visualization for neuroscience in Python <http://www.frontiersin.org/Journal/10.3389/fninf.2013.00036/full>`_ C. Rossant and K.D. Harris, Frontiers in Neuroinformatics, 7.36, (2013)
 
@@ -141,6 +85,4 @@ Publications around Vispy
 * `Vispy, a future tool for interactive visualization <https://github.com/vispy/static/raw/master/vispy-biforum-2013.pdf>`_ - Talk at Budapest BI forum 2013
 
 * `Vispy, a modern and interactive visualization framework <https://github.com/vispy/static/raw/master/vispy-euroscipy-2013.pdf>`_ - Talk at EuroScipy 2013
-
-
 
