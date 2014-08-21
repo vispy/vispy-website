@@ -16,10 +16,6 @@
 
       <h2>High-performance interactive data visualization in Python</h2>
 
-    lalala some text
-
-   .. raw:: html
-
       <a class="btn btn-warning clearfix" href="/download">
       <i class="icon-download icon-white"></i>Download</a>
 
@@ -35,12 +31,15 @@ display very large datasets. Applications of Vispy include:
 * OpenGL visualization demos.
 * Scientific GUIs with fast, scalable visualization widgets (Qt or IPython notebook with WebGL).
 
-**Important note**. As of today (July 2014), using Vispy requires knowing OpenGL. Within the next few weeks, we will offer higher-level graphical interfaces that allow for the creation of visualizations without any knowledge of OpenGL.
+We currently offer full support for building visualizations using OpenGL.
+We also provide experimental support for high-level graphical interfaces
+to create visualizations without any knowledge of OpenGL.
 
 
 Announcements
 -------------
 
+- **Release!** Version 0.2.2, August 22, 2014
 - **EuroSciPy 2014**: talk and sprint, August 2014
 - `Article in **Linux Magazine**, French Edition <https://github.com/vispy/linuxmag-article>`__, July 2014
 - **GSoC 2014**: `two GSoC students are currently working on Vispy under the PSF umbrella <https://github.com/vispy/vispy/wiki/Project.%20GSoC-2014>`__
@@ -54,9 +53,11 @@ Announcements
 Installation
 ------------
 
-Vispy runs on Python 2.6+ and Python 3.3+ and depends on Numpy and PyOpenGL.
+Vispy runs on Python 2.6 - Python 3.4 and depends on Numpy.
 
-As Vispy is under heavy development at this time, we highly recommend you to use the `development version on Github <https://github.com/vispy/vispy>`__ (master branch). You need to clone the repository and install Vispy with ``python setup.py install``.
+As Vispy is under heavy development at this time, we highly recommend you to use
+the `development version on Github <https://github.com/vispy/vispy>`__ (master branch).
+You need to clone the repository and install Vispy with ``python setup.py install``.
 
 
 About us

@@ -170,7 +170,7 @@ def create_gallery(examples):
     lines.append('')
     
     # Init
-    line1, line2, line3 = '| ', '| ', '| '
+    line1, line2, line3, line4 = '| ', '| ', '| ', '| '
     COLWIDTH = 100-2
     NCOLS = 3
     done = False
@@ -214,21 +214,24 @@ def create_gallery(examples):
                 linepart1 = ':doc:`examples/%s`' % name
                 linepart2 = ''
                 linepart3 = '.. image:: /_static/thumbs/%s' % image_name
+                linepart4 = '   :alt: %s' % name
             else:
-                linepart1 = linepart2 = linepart3 = ''
+                linepart1 = linepart2 = linepart3 = linepart4 = ''
             
             # Add these cells
             line1 += linepart1.ljust(COLWIDTH-2) + ' | '
             line2 += linepart2.ljust(COLWIDTH-2) + ' | '
             line3 += linepart3.ljust(COLWIDTH-2) + ' | '
+            line4 += linepart4.ljust(COLWIDTH-2) + ' | '
         
         
         # Close row
         lines.append(line1)
         lines.append(line2)
         lines.append(line3)
+        lines.append(line4)
         lines.append( ('+' + '-'*COLWIDTH) * NCOLS + '+' )
-        line1, line2, line3 = '| ', '| ', '| '
+        line1, line2, line3, line4 = '| ', '| ', '| ', '| '
     
     
     # Write file
