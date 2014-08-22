@@ -39,7 +39,7 @@ to create visualizations without any knowledge of OpenGL.
 Announcements
 -------------
 
-- **Release!** Version 0.3, August 22, 2014
+- **Release!** Version 0.3, August 25, 2014
 - **EuroSciPy 2014**: talk and sprint, August 2014
 - `Article in **Linux Magazine**, French Edition <https://github.com/vispy/linuxmag-article>`__, July 2014
 - **GSoC 2014**: `two GSoC students are currently working on Vispy under the PSF umbrella <https://github.com/vispy/vispy/wiki/Project.%20GSoC-2014>`__
