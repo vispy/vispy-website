@@ -3,22 +3,6 @@
 
 .. title:: Vispy: OpenGL-based interactive visualization in Python
 
-.. container_commented:: well hero row-fluid summary-box
-
-   .. raw:: html
-
-      <div class="gallery-random">
-        <script src="http://vispy.org/docs/dev/_static/random.js"></script>
-        <script type="text/javascript">
-          insert_gallery();
-        </script>
-      </div>
-
-      <h2>High-performance interactive data visualization in Python</h2>
-
-      <a class="btn btn-warning clearfix" href="/download">
-      <i class="icon-download icon-white"></i>Download</a>
-
 
 Vispy is a **high-performance interactive 2D/3D data visualization
 library**. Vispy leverages the computational power of modern **Graphics
