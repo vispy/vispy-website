@@ -28,6 +28,8 @@ extensions = ['sphinx.ext.doctest',
               'sphinx.ext.pngmath',
               'sphinx.ext.ifconfig',
               'examplesgenerator',
+              'slider',
+              'readme_insert',
               ]
 
 # Add any paths that contain templates here, relative to this directory.
