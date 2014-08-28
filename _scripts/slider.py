@@ -56,7 +56,7 @@ class SliderDirective(Directive):
 
 def setup(Sphynx):
     
-    Sphynx.add_javascript('jquery.anoslide.js')
+    Sphynx.add_javascript('js/jquery.anoslide.js')
     
     Sphynx.add_node(slider, html=(visit_slider_html, depart_slider_html))
     Sphynx.add_directive('slider', SliderDirective)
