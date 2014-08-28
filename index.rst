@@ -13,31 +13,30 @@
    
    <style rel="stylesheet" type="text/css">
       #owl-demo .item{
-      margin: 3px;
+      margin: 8px;
       }
       #owl-demo .item img{
       height: 250px;
       width: auto;
-      margin-left: auto;
-      margin-right: auto;
+      margin-left: 33%;
+      margin-right: 33%;
       }
    </style>
    
    <script>
-   
       $(document).ready(function() {
-      $("#owl-demo").owlCarousel({
-      items : 1,
-      lazyLoad : true,
-      dots: false,
-      autoplay : true,
-      autoplayTimeout: 3000,
-      autoplaySpeed: 1000,
-      center: true,
-      loop: true,
+         $("#owl-demo").owlCarousel({
+         
+            autoPlay: 3000, //Set AutoPlay to 3 seconds
+            items : 1,
+            singleItem : true,
+            lazyLoad : true,
+            slideSpeed : 1000,
+            pagination : false,
+         });
       });
-      
-      });
+
+
    </script>
 
 

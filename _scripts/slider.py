@@ -35,7 +35,7 @@ def visit_slider_html(self, node):
     for fname in filenames:
         filename = '_images/' + fname
         link = 'examples/' + fname.replace('__', '/')[:-4] + '.html'
-        line = '<img class="owl-lazy" data-src="%s" alt="Lazy Owl Image">' % filename
+        line = '<img class="lazyOwl" data-src="%s" alt="Lazy Owl Image">' % filename
         line = '<a href=%s>%s</a>' % (link, line)
         line = '    <div class="item">%s</div>' % line
         self.body.append(line + '\n')
@@ -60,6 +60,7 @@ def setup(Sphynx):
     Sphynx.add_javascript('owl-carousel/owl.carousel.min.js')
     Sphynx.add_stylesheet('owl-carousel/owl.carousel.css')
     Sphynx.add_stylesheet('owl-carousel/owl.theme.css')
+    #Sphynx.add_stylesheet('owl-carousel/owl.transitions.css')
     
     Sphynx.add_node(slider, html=(visit_slider_html, depart_slider_html))
     Sphynx.add_directive('slider', SliderDirective)
