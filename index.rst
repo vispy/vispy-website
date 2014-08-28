@@ -12,37 +12,77 @@
 .. raw:: html
    
    <style rel="stylesheet" type="text/css">
-      #owl-demo .item{
-      margin: 8px;
-      }
-      #owl-demo .item img{
-      height: 250px;
-      width: auto;
-      margin-left: 33%;
-      margin-right: 33%;
-      }
+      #carousel figure img  {
+         height: 200px;
+         padding: 0px;
+         border: 1px solid #D4D4D4;
+         }
    </style>
    
    <script>
-      $(document).ready(function() {
-         $("#owl-demo").owlCarousel({
+      function shuffle(array) {
+         var elementsRemaining = array.length, temp, randomIndex;
+         while (elementsRemaining > 1) {
+            randomIndex = Math.floor(Math.random() * elementsRemaining--);
+            if (randomIndex != elementsRemaining) {
+               temp = array[elementsRemaining];
+               array[elementsRemaining] = array[randomIndex];
+               array[randomIndex] = temp;
+            }
+         }
+         return array;
+      }
+      
+      $('#carousel ul').anoSlide(
+         {
+            items: 2,
+            lazy: true,
+            speed: 1000,
+            auto: 4000,
+            delay: 100,
+            autostop: false,
+            
+            onConstruct: function(instance)
+            {
+               shuffle(instance.slides);
+            },
+            /* rewind should be instant */
+            onStart: function(ui)
+            {
+               if (ui.index==0) 
+               {
+                  ui.instance.options.speed = 0;
+               }            
+            },
+            onEnd: function(ui)
+            {
+               if (ui.index==0) 
+               {
+                  ui.instance.options.speed = 1000;
+               }            
+            },
+         })
          
-            autoPlay: 5000, //Set AutoPlay to 3 seconds
-            items : 1,
-            singleItem : true,
-            lazyLoad : true,
-            slideSpeed : 1000,
-            pagination : false,
-         });
-      });
-
-
    </script>
+
+
+
+Announcements
+-------------
+
+- **Release!** Version 0.3, August 27, 2014
+- **EuroSciPy 2014**: talk at Saturday 30, and sprint at Sunday 31, August 2014
+- `Article in **Linux Magazine**, French Edition <https://github.com/vispy/linuxmag-article>`__, July 2014
+- **GSoC 2014**: `two GSoC students are currently working on Vispy under the PSF umbrella <https://github.com/vispy/vispy/wiki/Project.%20GSoC-2014>`__
+- **Release!**, Version 0.2.1 04-11-2013
+- **Presentation at BI forum**, Budapest, 6 November 2013
+- **Presentation at Euroscipy**, Belgium, August 2013
+- **EuroSciPy Sprint**, Belgium, August 2013
+- **Release!** Version 0.1.0 14-08-2013
 
 
 .. readme_insert:: ../README.rst
    The vispy readme gets inserted here.
-
 
 
 Publications
