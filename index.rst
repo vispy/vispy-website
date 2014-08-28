@@ -27,7 +27,7 @@
       $(document).ready(function() {
          $("#owl-demo").owlCarousel({
          
-            autoPlay: 3000, //Set AutoPlay to 3 seconds
+            autoPlay: 5000, //Set AutoPlay to 3 seconds
             items : 1,
             singleItem : true,
             lazyLoad : true,
