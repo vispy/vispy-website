@@ -230,3 +230,13 @@ p.admonition-title {
     /* Should derive width from span8 */
     width: 640px;
 }
+
+
+
+
+#carousel figure img  {
+    height: 200px;
+    padding: 0px;
+    border: 1px solid #D4D4D4;
+}
+
