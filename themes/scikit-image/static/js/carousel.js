@@ -16,7 +16,7 @@ $(document).ready(function() {
     $('#carousel[data-mixed] ul').anoSlide(
         {
         items: 3,
-        speed: 100,
+        speed: 500,
         prev: 'a.prev[data-prev]',
         next: 'a.next[data-next]',
         lazy: true,
