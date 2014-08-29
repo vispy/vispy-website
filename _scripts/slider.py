@@ -44,7 +44,7 @@ def visit_slider_html(self, node):
         link = 'examples/' + fname.replace('__', '/')[:-4] + '.html'
         line = '<img data-src="%s" src="%s">' % (filename, blank)
         line = '<a href=%s>%s</a>' % (link, line)
-        line = ('    <li><div class="wrap"><figure>%s</figure></div></li>'
+        line = ('    <li><div class="wrap" align="center">%s</div></li>'
                 % line)
         self.body.append(line + '\n')
     self.body.append('  </ul>\n')

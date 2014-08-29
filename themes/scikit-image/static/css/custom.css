@@ -234,23 +234,34 @@ p.admonition-title {
 /* carousel */
 
 .carousel {
-    float: center;
+    clear: both;
     margin: 0em;
-    margin-bottom: 40px;
+    margin-bottom: 32px;
+    border: 1px solid #D4D4D4;
 }
 
-.carousel figure {
-    float: center;
-    margin: 0em;
+.carousel li {
+    display:none;
+    margin-left: auto;
+    margin-right: auto;
 }
 
-.carousel figure img  {
-    float: center;
-    margin: 0.5em;
-    display: block;
+.carousel ul {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.carousel .wrap {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.carousel .wrap img  {
+    margin-top: 10px;
+    margin-bottom: 10px;
     height: 160px;
-    max-width: 280px;
-    padding: 0px;
     border: 1px solid #D4D4D4;
 }
 
@@ -261,7 +272,7 @@ p.admonition-title {
     position: absolute;
     top: 100%;
     left: 50%;
-    margin-top: -30px;
+    margin-top: -28px;
     z-index: 9999;
     cursor: pointer;
 }
