@@ -21,7 +21,7 @@ blank = ('data:image/gif;base64,'
 
 def visit_slider_html(self, node):
     self.body.append('\n<div id="carousel" class="carousel" data-mixed>\n')
-    arrows = ['  <a class="{0}" data-{0}><img src="{1}" '
+    arrows = ['  <a class="{0}" data-{0}><img src="_static/img/{0}.png" '
               'width=56 height=56></a>\n'.format(t, blank)
               for t in ['prev', 'next']]
     self.body.append(arrows[0])
@@ -33,7 +33,7 @@ def visit_slider_html(self, node):
     for fname in os.listdir(gallery_dir):
         if not os.path.splitext(fname)[1].lower() == '.png':
             continue
-        if not 'demo' in fname:
+        if 'demo' not in fname:
             continue  # only do pretty pictures!
         filenames.append(fname)
     # Add item for each name. We randomize here, because we can't do it
