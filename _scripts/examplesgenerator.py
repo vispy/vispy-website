@@ -1,4 +1,4 @@
-""" Called from vispy_conf.py to generate the examples for the docs from the 
+""" Called from vispy_conf.py to generate the examples for the docs from the
 example Python files.
 """
 
@@ -11,7 +11,7 @@ import shutil
 try:
     from urllib2 import urlopen
 except ImportError:
-    from urllib.request import urlopen # Py3k
+    from urllib.request import urlopen  # Py3k
 
 
 THIS_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -21,12 +21,14 @@ OUTPUT_DIR = os.path.join(DOC_DIR, 'examples')
 
 IMAGES_DIR = os.path.join(DOC_DIR, '_static', 'images')
 THUMBS_DIR = os.path.join(DOC_DIR, '_static', 'thumbs')
+CAROUSEL_DIR = os.path.join(DOC_DIR, '_static', 'carousel')
 
 # Get images from github or local
 #IMAGES_URL = 'http://raw.github.com/vispy/images/master/gallery/'
 #THUMBS_URL = 'http://raw.github.com/vispy/images/master/thumbs/'
 IMAGES_URL = os.path.join(DOC_DIR, '..', '_images', 'gallery/')
 THUMBS_URL = os.path.join(DOC_DIR, '..', '_images', 'thumbs/')
+CAROUSEL_URL = os.path.join(DOC_DIR, '..', '_images', 'carousel/')
 
 
 def init():
@@ -45,6 +47,8 @@ def clean(app, *args):
         shutil.rmtree(IMAGES_DIR)
     if os.path.isdir(THUMBS_DIR):
         shutil.rmtree(THUMBS_DIR)
+    if os.path.isdir(CAROUSEL_DIR):
+        shutil.rmtree(CAROUSEL_DIR)
     # Clear examples dir
     if os.path.isdir(OUTPUT_DIR):
         shutil.rmtree(OUTPUT_DIR)
@@ -58,16 +62,16 @@ def clean(app, *args):
 
 
 def main():
-    
     clean(None)
-    
     if not os.path.isdir(OUTPUT_DIR):
         os.mkdir(OUTPUT_DIR)
     if not os.path.isdir(IMAGES_DIR):
         os.mkdir(IMAGES_DIR)
     if not os.path.isdir(THUMBS_DIR):
         os.mkdir(THUMBS_DIR)
-    
+    if not os.path.isdir(CAROUSEL_DIR):
+        os.mkdir(CAROUSEL_DIR)
+
     # Get examples and sort
     examples = list( get_example_filenames(EXAMPLES_DIR) )
     examples.sort(key=lambda x: x[1])
@@ -204,6 +208,7 @@ def create_gallery(examples):
                             break
                 if in_gallery:
                     # Download thumb
+                    download_image(CAROUSEL_URL, CAROUSEL_DIR, name)
                     image_name = download_image(THUMBS_URL, THUMBS_DIR, name)
                     if not image_name:
                         name = None

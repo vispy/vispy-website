@@ -231,12 +231,47 @@ p.admonition-title {
     width: 640px;
 }
 
+/* carousel */
 
+.carousel {
+    float: center;
+    margin: 0em;
+    margin-bottom: 40px;
+}
 
+.carousel figure {
+    float: center;
+    margin: 0em;
+}
 
-#carousel figure img  {
-    height: 200px;
+.carousel figure img  {
+    float: center;
+    margin: 0.5em;
+    display: block;
+    height: 160px;
+    max-width: 280px;
     padding: 0px;
     border: 1px solid #D4D4D4;
 }
 
+.carousel .prev, #carousel .next {
+    display: none;
+    width: 56px;
+    height: 56px;
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-top: -30px;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+.carousel .prev {
+    margin-left: -60px;
+    background: url(../img/prev.png) 0 0 no-repeat; */
+}
+
+.carousel .next {
+    margin-right: -60px;
+    background: url(../img/next.png) 0 0 no-repeat; */
+}

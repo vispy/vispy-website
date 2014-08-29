@@ -13,33 +13,20 @@ function shuffle(array) {
 
 $(document).ready(function() {
     
-    $('#carousel ul').anoSlide(
+    $('#carousel[data-mixed] ul').anoSlide(
         {
-        items: 2,
+        items: 3,
+        speed: 100,
+        prev: 'a.prev[data-prev]',
+        next: 'a.next[data-next]',
         lazy: true,
-        speed: 1000,
-        auto: 4000,
-        delay: 100,
+        delay: 0,
+        auto: 3000,
         autostop: false,
         
         onConstruct: function(instance)
         {
             shuffle(instance.slides);
-        },
-        /* rewind should be instant */
-        onStart: function(ui)
-        {
-            if (ui.index==0) 
-            {
-                ui.instance.options.speed = 0;
-            }            
-        },
-        onEnd: function(ui)
-        {
-            if (ui.index==0) 
-            {
-                ui.instance.options.speed = 1000;
-            }            
         },
     });
 });
