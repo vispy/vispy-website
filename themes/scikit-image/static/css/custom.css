@@ -267,8 +267,8 @@ p.admonition-title {
 
 .carousel .prev, #carousel .next {
     display: none;
-    width: 56px;
-    height: 56px;
+    width: 28px;
+    height: 28px;
     position: absolute;
     top: 100%;
     left: 50%;
@@ -278,9 +278,10 @@ p.admonition-title {
 }
 
 .carousel .prev {
-    margin-left: -60px;
+    margin-left: -30px;
 }
 
 .carousel .next {
-    margin-right: -60px;
+    margin-right: -30px;
 }
+
