@@ -111,6 +111,7 @@ def create_examples(examples):
         
         # Get source
         in_gallery = False
+        is_gloo = False
         doclines = []
         sourcelines = []
         with open(os.path.join(EXAMPLES_DIR, name+'.py')) as f:
@@ -118,10 +119,15 @@ def create_examples(examples):
                 line = line.rstrip()
                 if line.startswith('# vispy:') and 'gallery' in line:
                     in_gallery = True
+                if 'Program(' in line:
+                    is_gloo = True
                 if not doclines:
                     if line.startswith('"""'):
                         doclines.append(line.lstrip('" '))
                         sourcelines = []
+                    elif '"""' in line:
+                        doclines.append('')  # There is no module docstring
+                        sourcelines.append('    ' + line)
                     else:
                         sourcelines.append('    ' + line)
                 elif not sourcelines:
@@ -144,6 +150,13 @@ def create_examples(examples):
                 lines.append('')
                 lines.append('----')
                 lines.append('')
+        
+        # Add note about OpenGL
+        if is_gloo:
+            lines.append(""".. note:: 
+                This example is based on ``vispy.gloo`` and thus uses GLSL
+                shading code, which is executed at the GPU and is
+                defined as multiline strings. \n\n""")
         
         # Add source code
         lines.append('.. code-block:: python')
@@ -175,7 +188,7 @@ def create_gallery(examples):
     lines.append('')
     
     # Init
-    line1, line2, line3, line4 = '| ', '| ', '| ', '| '
+    theselines = ['| ', '| ', '| ', '| ', '| ']
     COLWIDTH = 100-2
     NCOLS = 3
     done = False
@@ -217,27 +230,23 @@ def create_gallery(examples):
             
             # Create lineparts
             if name:
-                linepart1 = ':doc:`examples/%s`' % name
-                linepart2 = ''
-                linepart3 = '.. image:: /_static/thumbs/%s' % image_name
-                linepart4 = '   :alt: %s' % name
+                lineparts = [':doc:`examples/%s`' % name,
+                             '',
+                             '.. image:: /_static/thumbs/%s' % image_name,
+                             '   :alt: %s' % name,
+                             '   :target: examples/%s.html' % name,
+                             ]
             else:
-                linepart1 = linepart2 = linepart3 = linepart4 = ''
+                lineparts = [''] * 5
             
             # Add these cells
-            line1 += linepart1.ljust(COLWIDTH-2) + ' | '
-            line2 += linepart2.ljust(COLWIDTH-2) + ' | '
-            line3 += linepart3.ljust(COLWIDTH-2) + ' | '
-            line4 += linepart4.ljust(COLWIDTH-2) + ' | '
-        
+            for i in range(len(theselines)):
+                theselines[i] += lineparts[i].ljust(COLWIDTH-2) + ' | '
         
         # Close row
-        lines.append(line1)
-        lines.append(line2)
-        lines.append(line3)
-        lines.append(line4)
+        lines.extend(theselines)
         lines.append( ('+' + '-'*COLWIDTH) * NCOLS + '+' )
-        line1, line2, line3, line4 = '| ', '| ', '| ', '| '
+        theselines = ['| ', '| ', '| ', '| ', '| ']
     
     
     # Write file
