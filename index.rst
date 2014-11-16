@@ -22,6 +22,12 @@ Publications
 
 * `Higher Quality 2D Text Rendering <http://jcgt.org/published/0002/01/04/>`_ N. P. Rougier. Journal of Computer Graphics Techniques, 2.1 (2013)
 
+
+Talks
+-----
+
+* `Introducing Vispy's high level modules: easy yet powerful visualization for everyone <http://www.youtube.com/watch?v=D7w8H4wmPRo>`_ - Talk at EuroScipy 2014
+
 * `Vispy, a future tool for interactive visualization <https://github.com/vispy/static/raw/master/vispy-biforum-2013.pdf>`_ - Talk at Budapest BI forum 2013
 
 * `Vispy, a modern and interactive visualization framework <https://github.com/vispy/static/raw/master/vispy-euroscipy-2013.pdf>`_ - Talk at EuroScipy 2013
