@@ -1,5 +1,5 @@
 _build
-gh-pages
+_publish
 __pycache__
 *.pyc
 

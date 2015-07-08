@@ -1,4 +1,0 @@
-vispy-website
-=============
-
-Website sources

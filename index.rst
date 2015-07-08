@@ -1,34 +1,132 @@
-.. meta_lalala::
-   :google-site-verification: 
-
-.. title:: Vispy: OpenGL-based interactive visualization in Python
+.. title:: VisPy: Interactive scientific visualization
 
 
-.. slider:: ../_images/gallery
-   This is where the gallery images get shown
-   The html below is to make the gallery actually work :)
+.. container:: jumbotron
+
+   .. container:: row
 
 
-.. readme_insert:: ../README.rst
-   The vispy readme gets inserted here.
+      .. container:: col-lg-9
+
+         .. image:: _static/vispy-teaser.svg
+            :class: img-responsive center-block
 
 
-Publications
-------------
+         VisPy is a `Python <http://www.python.org>`_ library for interactive
+         scientific visualization that is designed to be fast, scalable, and
+         easy to use.
 
-* `Hardware-accelerated interactive data visualization for neuroscience in Python <http://www.frontiersin.org/Journal/10.3389/fninf.2013.00036/full>`_ C. Rossant and K.D. Harris, Frontiers in Neuroinformatics, 7.36, (2013)
-
-* `Shader-based Antialiased Dashed Stroked Polylines <http://jcgt.org/published/0002/02/08/>`_ N. P. Rougier. Journal of Computer Graphics Techniques, 2.2 (2013)
-
-* `Higher Quality 2D Text Rendering <http://jcgt.org/published/0002/01/04/>`_ N. P. Rougier. Journal of Computer Graphics Techniques, 2.1 (2013)
+      .. container:: col-lg-3 text-right
 
 
-Talks
------
+         .. raw:: html
 
-* `Introducing Vispy's high level modules: easy yet powerful visualization for everyone <http://www.youtube.com/watch?v=D7w8H4wmPRo>`_ - Talk at EuroScipy 2014
+             <h3><i class="fa fa-tachometer fa-2x"></i> Fast</h3>
+             <p><small>GPU accelerated</small></p>
 
-* `Vispy, a future tool for interactive visualization <https://github.com/vispy/static/raw/master/vispy-biforum-2013.pdf>`_ - Talk at Budapest BI forum 2013
+         .. raw:: html
 
-* `Vispy, a modern and interactive visualization framework <https://github.com/vispy/static/raw/master/vispy-euroscipy-2013.pdf>`_ - Talk at EuroScipy 2013
+             <h3><i class="fa fa-signal fa-2x"></i> Scalable</h3>
+             <p><small>Millions of points, real-time</small></p>
 
+         .. raw:: html
+
+             <h3><i class="fa fa-heart fa-2x"></i> Beautiful</h3>
+             <p><small>Antigrain rendering</small></p>
+
+
+
+..
+   .. container:: row
+
+      .. container:: col-lg-4 text-center
+
+         .. raw:: html
+
+             <h2><i class="fa fa-2x icon-python"></i> Pyhon powered</h2>
+
+         Using `
+
+      .. container:: col-lg-4 text-center
+
+         .. raw:: html
+
+             <h2><i class="fa fa-2x icon-shell"></i> Interactive</h2>
+
+         Control everything from python
+
+
+      .. container:: col-lg-4 text-center
+
+         .. raw:: html
+
+             <h2><i class="fa fa-github fa-2x"></i> Open source</h2>
+
+         Join us on `github <https://github.com/vispy/vispy>`_
+
+
+.. raw:: html
+
+   <div id="HomeCarousel" class="carousel slide" data-ride="carousel">
+      <ol class="carousel-indicators">
+        <li data-target="#HomeCarousel" data-slide-to="0" class="active"></li>
+        <li data-target="#HomeCarousel" data-slide-to="1" class=""></li>
+        <li data-target="#HomeCarousel" data-slide-to="2" class=""></li>
+        <li data-target="#HomeCarousel" data-slide-to="3" class=""></li>
+      </ol>
+
+      <div class="carousel-inner">
+
+        <div class="item active">
+          <img src="_static/carousel/galaxy.png" alt="Galaxy" style="width:100%">
+          <div class="container">
+            <div class="carousel-caption">
+
+              <h1>Spiral galaxy simulation</h1>
+              <p> Simulation of a spiral galaxy using the density wave theory.</p>
+              <p><a class="btn btn-primary" href="gallery.html" role="button">Check it out</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="_static/carousel/high-frequency.png" alt="High-frequency signal" style="width:100%">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>High frequency signals</h1>
+              <p>GPU multisampled high-frequency signal</p>
+              <p><a class="btn btn-primary" href="gallery.html" role="button">Browse gallery</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="_static/carousel/mandelbrot.png" alt="Mandelbrot" style="width:100%">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Mandelbrot set</h1>
+              <p>GPU computed fractals</p>
+              <p><a class="btn btn-primary" href="gallery.httml" role="button">Shom me more</a></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="item">
+          <img src="_static/carousel/signals.png" alt="Signals" style="width:100%">
+          <div class="container">
+            <div class="carousel-caption">
+              <h1>Realtime signals</h1>
+              <p>320 signals with 10 000 points each</p>
+              <p><a class="btn btn-primary" href="gallery.html" role="button">Waouh !</a></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <a class="left carousel-control" href="#HomeCarousel" role="button"
+         data-slide="prev"><span class="glyphicon glyphicon-chevron-left"></span></a>
+
+      <a class="right carousel-control" href="#HomeCarousel" role="button"
+         data-slide="next"><span class="glyphicon glyphicon-chevron-right"></span></a>
+
+    </div>
