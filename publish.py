@@ -77,6 +77,7 @@ def init_repo(path):
 #-----------------------------------------------------------------------------
 if __name__ == '__main__':
     startdir = os.getcwd()
+    assert len(pages_dir) > 0
     if not os.path.exists(pages_dir):
         # init the repo
         init_repo(pages_dir)
@@ -94,6 +95,7 @@ if __name__ == '__main__':
     # directory, and then copy the html tree in there
     sh('rm -rf %s/*' % pages_dir)
     sh('cp -r %s/* %s/' % (html_dir, pages_dir))
+    sh('cp CNAME %s/' % pages_dir)
     sh('touch %s/.nojekyll' % (pages_dir))
 
     try:
