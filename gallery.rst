@@ -22,7 +22,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/fireworks.png
             :width: 100%
             :class: img-rounded
-            :target: _static/screenshots/fireworks.png
+            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/fireworks.py
 
          .. container:: caption
 
@@ -46,7 +46,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/galaxy.png
             :width: 100%
             :class: img-rounded
-            :target: _static/screenshots/galaxy.png
+            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/galaxy/galaxy.py
 
          .. container:: caption
 
@@ -71,7 +71,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/voronoi.png
             :width: 100%
             :class: img-rounded
-            :target: _static/screenshots/voronoi.png
+            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/voronoi.py
 
          .. container:: caption
 
@@ -96,7 +96,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/high-frequency.png
             :width: 100%
             :class: img-rounded
-            :target: _static/screenshots/high-frequency.png
+            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/high_frequency.py
 
          .. container:: caption
 
@@ -122,7 +122,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/gloo-cloud.png
             :width: 100%
             :class: img-rounded
-            :target: _static/screenshots/gloo-cloud.png
+            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/cloud.py
 
          .. container:: caption
 
@@ -146,7 +146,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/mandelbrot.png
             :width: 100%
             :class: img-rounded
-            :target: _static/screenshots/mandelbrot.png
+            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/mandelbrot.py
 
          .. container:: caption
 
@@ -171,7 +171,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/grayscott.png
             :width: 100%
             :class: img-rounded
-            :target: _static/screenshots/grayscott.png
+            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/grayscott.py
 
          .. container:: caption
 
@@ -196,7 +196,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/collection-custom-lines.png
             :width: 100%
             :class: img-rounded
-            :target: _static/screenshots/collection-custom-lines.png
+            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/realtime_signals.py
 
          .. container:: caption
 
