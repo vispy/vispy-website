@@ -191,7 +191,7 @@ html_title = 'VisPy'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "_static/vispy-text-white.svg"
+html_logo = "_static/vispy-text-white.png"
 
 
 # The name of an image file (within the static path) to use as favicon of the

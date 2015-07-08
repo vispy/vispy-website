@@ -8,7 +8,7 @@
 
       .. container:: col-lg-9
 
-         .. image:: _static/vispy-teaser.svg
+         .. image:: _static/vispy-teaser.png
             :class: img-responsive center-block
 
 

@@ -17,12 +17,12 @@
    height="23"
    xml:space="preserve"
    sodipodi:docname="vispy-text-white.svg"
-   inkscape:export-filename="/Users/rougier/Development/Public/glumpy/doc/_static/glumpy-text-white.png"
-   inkscape:export-xdpi="71.739998"
-   inkscape:export-ydpi="71.739998"><metadata
+   inkscape:export-filename="vispy-text-white.png"
+   inkscape:export-xdpi="90.147774"
+   inkscape:export-ydpi="90.147774"><metadata
      id="metadata8"><rdf:RDF><cc:Work
          rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title /></cc:Work></rdf:RDF></metadata><defs
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
      id="defs6"><clipPath
        clipPathUnits="userSpaceOnUse"
        id="clipPath18"><path
@@ -1233,8 +1233,8 @@
      fit-margin-right="7"
      fit-margin-bottom="5"
      inkscape:zoom="7.0710678"
-     inkscape:cx="-2.6082412"
-     inkscape:cy="18.219761"
+     inkscape:cx="-26.310801"
+     inkscape:cy="17.936918"
      inkscape:window-x="0"
      inkscape:window-y="0"
      inkscape:window-maximized="1"
