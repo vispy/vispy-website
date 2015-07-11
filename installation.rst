@@ -41,16 +41,25 @@ The results of the above command and is long list of information related to
 your system and video driver. The OpenGL version must be at least 2.1.
 
 
-Installation
-============
+Installation options
+====================
 
-Once requirements are met, you can proceed with VisPy installation::
-
-   $ pip install vispy
-
-or upgrade any existing installation::
+**To install the latest release version**, you can do::
 
    $ pip install --upgrade vispy
+
+**If you want to run the latest development version**, you can clone the
+repository to your local machine and install with ``develop`` to enable easy
+updates to latest``master``::
+
+   $ git clone git://github.com/vispy/vispy.git  # creates "vispy" folder
+   $ cd vispy
+   $ python setup.py develop
+
+To run the latest development version without cloning the repository, you
+can also use this line::
+
+   $ pip install -e git+https://github.com/vispy/vispy#egg=vispy-dev
 
 
 Testing installation

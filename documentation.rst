@@ -24,7 +24,16 @@ complete user guide for Vispy. VisPy targets two primary categories of users:
    (**WARNING**: experimental / developing code).
 
 Please check out the :ref:`gallery` for inspiration.
-  
+
+
+Installation instructions
+-------------------------
+
+.. toctree::
+   :maxdepth: 2
+
+   installation
+
 
 API Reference
 -------------

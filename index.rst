@@ -27,7 +27,7 @@
          .. raw:: html
 
              <h3><i class="fa fa-signal fa-2x"></i> Scalable</h3>
-             <p><small>Millions of points, real-time</small></p>
+             <p><small>Million points, real-time</small></p>
 
          .. raw:: html
 
