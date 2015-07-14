@@ -106,7 +106,7 @@
             <div class="carousel-caption">
               <h1>Mandelbrot set</h1>
               <p>GPU computed fractals</p>
-              <p><a class="btn btn-primary" href="gallery.html" role="button">Shom me more</a></p>
+              <p><a class="btn btn-primary" href="gallery.html" role="button">Show me more</a></p>
             </div>
           </div>
         </div>

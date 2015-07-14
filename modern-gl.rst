@@ -2,7 +2,7 @@
 Modern OpenGL
 =============
 
-OpenGL has evolved over the years and a big change occured in 2003 with the
+OpenGL has evolved over the years and a big change occurred in 2003 with the
 introduction of the dynamic pipeline (OpenGL 2.0), i.e. the use of shaders that
 allow to have direct access to the GPU.
 
@@ -52,7 +52,7 @@ These two shaders are not very useful since the first will transform any
 vertex into the null vertex while the second will output the black color for
 any fragment. We'll see later how to make them to do more useful things.
 
-One question remains: when are those shaders exectuted exactly ? The vertex
+One question remains: when are those shaders executed, exactly? The vertex
 shader is executed for each vertex that is given to the rendering pipeline
 (we'll see what does that mean exactly later) and the fragment shader is
 executed on each fragment that is generated after the vertex stage. For
@@ -65,7 +65,7 @@ Buffers
 =======
 
 We explained earlier that the vertex shader act on the vertices. The question
-is thus where do those vertices comes from ? The idea of modern GL is that
+is thus where do those vertices comes from? The idea of modern GL is that
 vertices are stored on the GPU and needs to be uploaded (only once) to the GPU
 before rendering. The way to do that is to build buffers onto the CPU and to
 send them onto the GPU. If your data does not change, no need to upload it
@@ -73,7 +73,7 @@ again. That is the big difference with the previous fixed pipeline where data
 were uploaded at each rendering call (only display lists were built into GPU
 memory).
 
-But what is the structure of a vertex ? OpenGL does not assume anything about
+But what is the structure of a vertex? OpenGL does not assume anything about
 your vertex structure and you're free to use as many information you may need
 for each vertex. The only condition is that all vertices from a buffer have the
 same structure (possibly with different content). This again is a big
@@ -94,7 +94,7 @@ structured array using the `numpy <http://www.numpy.org>`_ library::
 
 We just created a CPU buffer with 4 vertices, each of them having a
 ``position`` (3 floats for x,y,z coordinates) and a ``color`` (4 floats for
-red, blue, green and alpha channels). Note that we explicitely chose to have 3
+red, blue, green and alpha channels). Note that we explicitly chose to have 3
 coordinates for ``position`` but we may have chosen to have only 2 if were to
 work in two-dimensions only. Same holds true for ``color``. We could have used
 only 3 channels (r,g,b) if we did not want to use transparency. This would save
@@ -171,9 +171,9 @@ and then in the fragment shader, we write::
       gl_FragColor = v_color;
   }
 
-The question is what is the value of ``v_color`` inside the fragment shader ?
-If you look at the figure that introduced the gl pipleline, we have 3 vertices and 21
-fragments. What is the color of each individual fragment ?
+The question is: what is the value of ``v_color`` inside the fragment shader?
+If you look at the figure that introduced the gl pipeline, we have 3 vertices and 21
+fragments. What is the color of each individual fragment?
 
 The answer is *the interpolation of all 3 vertices color*. This interpolation
 is made using distance of the fragment to each individual vertex. This is a
@@ -230,7 +230,7 @@ Suffice it to say they are standard matrices in the 3D world. Both suppose the
 viewer (=camera) is located at position (0,0,0) and is looking in the direction
 (0,0,1).
 
-There exists a second form of the perpective matrix that might be easier to
+There exists a second form of the perspective matrix that might be easier to
 manipulate. Instead of specifying the right/left/top/bottom planes, we'll use
 field of view in the horizontal and vertical direction:
 
@@ -253,7 +253,7 @@ convenient. So instead, we'll use a view matrix that will map the the world
 space to camera space. This is pretty much as if we were orienting the camera
 at a given position and look toward a given direction. In the meantime, we can
 further refine the whole pipeline by providing a model matrix that will maps
-the object's local coordinate space into world space. For example, this wil be
+the object's local coordinate space into world space. For example, this will be
 useful for rotating an object around its center. To sum up, we need:
 
 * **Model matrix** maps from an object's local coordinate space into world space
