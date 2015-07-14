@@ -77,7 +77,7 @@ Gallery
 
             :header:`Voronoi diagrams`
 
-            This example shows dynamic voronoi based on an `old technique
+            This example shows dynamic Voronoi cells based on an `old technique
             <https://wwwx.cs.unc.edu/~geom/papers/documents/technicalreports/tr99011.pdf>`_
             where the hardware is used to compute the diagram using 3D occluded cones.
 
