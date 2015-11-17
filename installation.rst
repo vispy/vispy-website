@@ -45,6 +45,14 @@ your system and video driver. The OpenGL version must be at least 2.1.
 Installation options
 ====================
 
+**Before installing VisPy** you should ensure a working version of python is installed on your computer, including all of the requirements included in the **Backend Requirements** section above. A simple way to install most of these requirements is to install the **Anaconda** scientific python distribution from Continuum Analytics. [Anaconda](https://www.continuum.io/downloads) will install most of the VisPy dependencies for you. If yor computer is low on hard disk space, or you would like a minimal python installation, you may install the [Miniconda](http://conda.pydata.org/miniconda.html) package also from Continuum Analytics. Once Anaconda is installed, create a [conda python environment](http://conda.pydata.org/docs/py2or3.html).
+
+Next, install the following VisPy dependencies directly through `pip` or the Anaconda package installer.
+
+$ conda install numpy pyqt
+
+Once the python dependencies have been installed, install the latest proprietary drivers for your computer's GPU. Generally these drivers may be downloaded from the GPU manufacturer's website.
+
 **To install the latest release version**, you can do::
 
    $ pip install --upgrade vispy
@@ -72,3 +80,5 @@ check if everything is ok. To do this, just type::
    >>> import vispy
    >>> vispy.test()
    ...
+
+Please note that the test suite may be unstable on some systems. Any potential instability in the test suite does not necessarily imply instability in the working state of the provided VisPy examples.
