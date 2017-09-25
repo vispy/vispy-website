@@ -15,11 +15,12 @@ Backend requirements
 
 VisPy requires at least one toolkit for opening a window and creates an OpenGL
 context. This can be done using one Qt, GLFW,SDL2, Wx, or Pyglet. You can also
-use an IPython notebook (version 3+) with WebGL for some visualizations.
+use a Jupyter notebook (version 3+) with WebGL for some visualizations although
+it is not fully functional at this time.
 
 .. warning::
 
-   You only need to have one of these packages, no need to install them all !
+   You only need to have one of these packages, no need to install them all!
 
 
 Hardware requirements
