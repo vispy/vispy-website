@@ -80,5 +80,5 @@ vispy.gloo.gl - low level GL API
 
 Vispy also exposes a (low level) functional GL API.
 
- `vispy.gloo.gl docs <gl.html>`_
+ :doc:`vispy.gloo.gl docs <gl>`
  
