@@ -60,7 +60,7 @@ updates to latest``master``::
 To run the latest development version without cloning the repository, you
 can also use this line::
 
-   $ pip install -e git+https://github.com/vispy/vispy#egg=vispy-dev
+   $ pip install git+https://github.com/vispy/vispy.git
 
 
 Testing installation

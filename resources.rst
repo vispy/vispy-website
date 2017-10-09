@@ -27,6 +27,9 @@ GPUs.
   <http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Table-of-Contents.html>`_
   that walks through the parts that are still relevant today.
 
+* `Open.gl <https://open.gl/>`_ is a great walkthrough of modern OpenGL features
+  with example code and output. Available in various ebook formats.
+
 * `Shadertoy <https://www.shadertoy.com>`_ is a great resources to experiment
   and learn fragment shaders.
 
