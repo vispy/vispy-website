@@ -47,7 +47,7 @@ Installation options
 
 **Before installing VisPy** you should ensure a working version of python is
 installed on your computer, including all of the requirements included in the
-**Backend Requirements** section above. A simple wayto install most of these
+**Backend Requirements** section above. A simple way to install most of these
 requirements is to install the **Anaconda** scientific python distribution
 from Continuum Analytics.
 `Anaconda <https://www.anaconda.com/download/>`_ will
@@ -75,7 +75,7 @@ downloaded from the GPU manufacturer's website.
 
 **If you want to run the latest development version**, you can clone the
 repository to your local machine and install with ``develop`` to enable easy
-updates to latest``master``:
+updates to latest ``master``:
 
 .. code-block:: console
 
