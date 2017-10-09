@@ -50,7 +50,7 @@ installed on your computer, including all of the requirements included in the
 **Backend Requirements** section above. A simple wayto install most of these
 requirements is to install the **Anaconda** scientific python distribution
 from Continuum Analytics.
-`Anaconda <https://www.anaconda.com/download/#macos>`_ will
+`Anaconda <https://www.anaconda.com/download/>`_ will
 install most of the VisPy dependencies for you. If your computer is low on hard
 disk space, or you would like a minimal python installation, you may install
 the `Miniconda <https://conda.io/miniconda.html>`_ package also from
