@@ -11,7 +11,7 @@ Release notes
   * Add colormaps
   * Add various new visuals `GridMesh`, `BoxVisual`, `PlaneVisual`, etc.
   * Various bug fixes and performance improvements (177+ pull requests)
-  * Remove experimental matplotlib backend
+  * Remove experimental matplotlib backend (`mpl_plot`)
   * Drop Python 2.6 support
 
 **Vispy 0.4**

@@ -47,7 +47,6 @@ API Reference
    vispy.geometry - Visualization-related geometry routines <geometry>
    vispy.gloo - User-friendly, Pythonic, object-oriented interface to OpenGL <gloo>
    vispy.io - Data IO <io>
-   vispy.mpl_plot - OpenGL backend for matplotlib [experimental] <mpl_plot>
    vispy.plot - Vispy native plotting module [experimental] <plot>
    vispy.scene - The system underlying the upcoming high-level visualization interfaces [experimental] <scene>
    vispy.visuals - The visuals that are used for high-level plotting <visuals>
