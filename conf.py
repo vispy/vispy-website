@@ -50,7 +50,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'VisPy'
-copyright = u'2015, VisPy developers'
+copyright = u'2013-2017, VisPy developers'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
