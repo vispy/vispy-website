@@ -23,7 +23,7 @@ complete user guide for Vispy. VisPy targets two primary categories of users:
    and :mod:`vispy.scene` interfaces for high-level work
    (**WARNING**: experimental / developing code).
 
-Please check out the :ref:`gallery` for inspiration.
+Please check out the :doc:`gallery` for inspiration.
 
 
 Installation instructions

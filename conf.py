@@ -13,6 +13,7 @@
 import sphinx_bootstrap_theme
 import sys
 import os
+import vispy
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
@@ -23,7 +24,7 @@ sys.path.append(os.path.abspath('ext'))
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
-#needs_sphinx = '1.0'
+needs_sphinx = '1.6'
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -32,6 +33,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.imgmath',
               'sphinx.ext.autosummary',
               'sphinx.ext.intersphinx',
+              'sphinx.ext.linkcode',
               'numpydoc',
               'bootstrap',
               ]
@@ -105,9 +107,6 @@ pygments_style = 'sphinx'
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
 html_theme = 'bootstrap'
-
-html_translator_class = 'bootstrap.HTMLTranslator'
-
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
@@ -344,3 +343,73 @@ intersphinx_mapping = {
     'https://docs.scipy.org/doc/scipy/reference': None,
     'https://vispy.github.io': None
 }
+
+
+def setup(app):
+    # Add custom CSS
+    app.add_stylesheet('css/font-mfizz.css')
+    app.add_stylesheet('css/font-awesome.css')
+    app.add_stylesheet('style.css')
+
+# -----------------------------------------------------------------------------
+# Source code links
+# -----------------------------------------------------------------------------
+
+import re
+import inspect
+from os.path import relpath, dirname
+
+
+def linkcode_resolve(domain, info):
+    """
+    Determine the URL corresponding to Python object
+    """
+    if domain != 'py':
+        return None
+
+    modname = info['module']
+    fullname = info['fullname']
+
+    submod = sys.modules.get(modname)
+    if submod is None:
+        return None
+
+    obj = submod
+    for part in fullname.split('.'):
+        try:
+            obj = getattr(obj, part)
+        except AttributeError:
+            return None
+
+    # should be `None` if not found
+    try:
+        fn = inspect.getsourcefile(obj)
+    except TypeError:
+        fn = None
+    if not fn:
+        # should be `None` if not found
+        try:
+            fn = inspect.getsourcefile(sys.modules[obj.__module__])
+        except AttributeError:
+            fn = None
+    if not fn:
+        return None
+
+    try:
+        source, lineno = inspect.getsourcelines(obj)
+    except OSError:
+        source = ""
+        lineno = None
+
+    if lineno:
+        linespec = "#L%d-L%d" % (lineno, lineno + len(source) - 1)
+    else:
+        linespec = ""
+
+    fn = relpath(fn, start=dirname(vispy.__file__))
+    if 'dev' in vispy.__version__:
+        kind = 'master'
+    else:
+        kind = '%s' % ('.'.join(vispy.__version__.split('.')[:2]))
+    return "https://github.com/vispy/vispy/blob/%s/vispy/%s%s" % (  # noqa
+       kind, fn, linespec)

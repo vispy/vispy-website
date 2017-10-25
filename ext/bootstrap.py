@@ -1,7 +1,9 @@
 from sphinx.writers import html
 
+
 def setup(app):
-    pass
+    app.set_translator('html', HTMLTranslator)
+
 
 class HTMLTranslator(html.HTMLTranslator):
 
