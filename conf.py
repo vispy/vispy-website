@@ -106,9 +106,6 @@ pygments_style = 'sphinx'
 # a list of builtin themes.
 html_theme = 'bootstrap'
 
-html_translator_class = 'bootstrap.HTMLTranslator'
-
-
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
@@ -344,3 +341,10 @@ intersphinx_mapping = {
     'https://docs.scipy.org/doc/scipy/reference': None,
     'https://vispy.github.io': None
 }
+
+
+def setup(app):
+    # Add custom CSS
+    app.add_stylesheet('css/font-mfizz.css')
+    app.add_stylesheet('css/font-awesome.css')
+    app.add_stylesheet('style.css')
