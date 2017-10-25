@@ -109,13 +109,13 @@ if __name__ == '__main__':
 
         sh('git add .')
         sh('git commit -am"Updated website (automated commit)"')
-        print
-        print 'Most recent 3 commits:'
+        print()
+        print('Most recent 3 commits:')
         sys.stdout.flush()
         sh('git --no-pager log --oneline -n 3')
     finally:
         cd(startdir)
 
-    print
-    print 'Now verify the build in: %r' % pages_dir
-    print "If everything looks good, run 'git push' inside _publish/."
+    print()
+    print('Now verify the build in: %r' % pages_dir)
+    print("If everything looks good, run 'git push' inside _publish/.")
