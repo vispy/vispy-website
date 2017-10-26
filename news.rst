@@ -2,6 +2,11 @@
 News
 ====
 
+2017
+----
+
+:2017/10/24: **Release!** Version 0.5.0
+
 2015
 ----
 
@@ -19,6 +24,7 @@ News
 
 2013
 ----
+
 :2013/04/11: **Release!** Version 0.2.1
 :2013/11/06: Presentation at BI forum, Budapest
 :2013/08/30: Presentation at Euroscipy, Belgium
