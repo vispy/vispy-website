@@ -5,6 +5,7 @@ News
 2017
 ----
 
+:2017/11/04: **Release!** Version 0.5.1
 :2017/10/24: **Release!** Version 0.5.0
 
 2015
