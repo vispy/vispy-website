@@ -41,6 +41,13 @@ To get information on your system, you can type:
 The results of the above command and is long list of information related to
 your system and video driver. The OpenGL version must be at least 2.1.
 
+.. note::
+
+    On linux systems the `xrandr` command is used to determine the screen's
+    DPI. On certain (virtual) displays it reports screen dimensions of
+    0mm x 0mm. In this case users may attempt to fix their screen resolution
+    or download the `xdpyinfo` (xorg-xdpyinfo) utility as an alternative to
+    `xrandr`. A default DPI of 96 is used otherwise.
 
 Installation options
 ====================
