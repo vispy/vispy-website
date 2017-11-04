@@ -2,6 +2,13 @@
 Release notes
 =============
 
+**Vispy 0.5.1**
+
+  * Fix 'doc' directory being installed with source tarball
+  * Fix 'ArrowVisual' when used with a Scene camera and in 3D space
+  * Fix 'SphereVisual' rows/cols order in 'latitude' method
+  * Fix DPI calculation on linux when xrandr returns 0mm screen dimension
+
 **Vispy 0.5**
 
   * Major refactor of all cameras and visuals
