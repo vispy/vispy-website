@@ -1,5 +1,15 @@
 .. title:: Home
 
+.. toctree::
+    :hidden:
+
+    community
+    documentation
+    gallery
+    gl
+    modern-gl
+    news
+    resources
 
 .. container:: jumbotron
 
