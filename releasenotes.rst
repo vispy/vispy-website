@@ -2,6 +2,17 @@
 Release notes
 =============
 
+**Vispy 0.5.2**
+
+  * Fix PyPI packaging to include LICENSE.txt
+  * Fix initial axis limits in PlotWidget (#1386)
+  * Fix zoom event position in Pyglet backend (#1388)
+  * Fix camera importing (#1389, #1172)
+  * Refactor `EllipseVisual` and `RectangleVisual` (#1387, #1349)
+  * Fix `one_scene_four_cams.py` example (#1391, #1124)
+  * Add `two_qt_widgets.py` example (#1392, #1298)
+  * Fix order of alignment values for proper processing (#1395, #641)
+
 **Vispy 0.5.1**
 
   * Fix 'doc' directory being installed with source tarball
