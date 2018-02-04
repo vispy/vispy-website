@@ -129,14 +129,3 @@ kernel
 
 Namely, this has the effect of sharing the event loop between application and the interactive
 console allowing you use both simultaneously.
-
-Switchable graphics
---------------------
-
-A few laptops ship with switchable graphics with Nvidia and Intel.
-You can discuss different ways of getting VisPy to work with your GPU on the appropriate
-Github issues.
-
-- `Windows + switchable graphics <https://github.com/vispy/vispy/issues/1418>`_
-- `Nvidia switchable graphics + Linux <https://github.com/vispy/vispy/issues/1416>`_
-- `Nvidia switchable graphics + Linux + Jupyter Console <https://github.com/vispy/vispy/issues/1417>`_
