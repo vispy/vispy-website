@@ -134,8 +134,9 @@ Switchable graphics
 --------------------
 
 A few laptops ship with switchable graphics with Nvidia and Intel.
-VisPy does not support switchable graphics but you can discuss potential solutions on the related
-Github issues:
+You can discuss different ways of getting VisPy to work with your GPU on the appropriate
+Github issues.
+
 - `Windows + switchable graphics <https://github.com/vispy/vispy/issues/1418>`_
 - `Nvidia switchable graphics + Linux <https://github.com/vispy/vispy/issues/1416>`_
 - `Nvidia switchable graphics + Linux + Jupyter Console <https://github.com/vispy/vispy/issues/1417>`_
