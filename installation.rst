@@ -112,13 +112,15 @@ check if everything is ok. To do this, just type:
 
 Please note that the test suite may be unstable on some systems. Any potential instability in the test suite does not necessarily imply instability in the working state of the provided VisPy examples.
 
-Switcheable graphics
+Switchable graphics
 --------------------
 
-If your laptop comes with switcheable graphics you have to make sure to tell python to use
+If your laptop comes with switchable graphics you have to make sure to tell python to use
 your graphics card instead of the integrated Intel graphics.
 You can identify which graphics card will be used by running:
+
 .. code-block:: python
+
    >>> import vispy
    >>> print(vispy.sys_info())
 
@@ -128,6 +130,7 @@ and look for Nvidia in the ``GL version``. For example: ``GL version:  '4.6.0 NV
 Windows
 ~~~~~~~
 In Windows, you should open the the Nvidia-console and add your specific python to the list of programs that should use the dedicated graphics card.
+Note that this setting is seperate for different conda environments so make sure you have selected the one you are using VisPy with.
 
 Linux
 ~~~~~
@@ -136,9 +139,11 @@ On Linux with the proprietary Nvidia graphics drivers, you should run python wit
 For use with a Jupyter kernel, say in Spyder or the ``jupyter-qtconsole``, make sure the kernel is started with ``primusrun``. For example:
 
 .. code-block:: bash
+
     $ primusrun spyder3
 
 .. code-block:: bash
+
     $ primusrun jupyter-qtconsole
 
 
@@ -152,6 +157,7 @@ If you want the jupyter-qtconsole to always use your Nvidia graphics card, you c
 then edit the ``kernel.json`` file to include ``"primusrun",`` as the first parameter in ``argv``. For example:
 
 .. code-block:: json
+
    {
      "argv": [
        "primusrun",
@@ -164,6 +170,8 @@ then edit the ``kernel.json`` file to include ``"primusrun",`` as the first para
      "language": "python",
      "display_name": "Python 3"
    }
+
+Using a similar configuration, you could have two kernels configurations, one for the dedicated graphics card, and one for the integrated graphics.
 
 Spyder has it's own configuration and I don't know exactly how to make its console run with ``primusrun`` without running ``primusrun spyder3``.
 
