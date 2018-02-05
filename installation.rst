@@ -111,3 +111,62 @@ check if everything is ok. To do this, just type:
    ...
 
 Please note that the test suite may be unstable on some systems. Any potential instability in the test suite does not necessarily imply instability in the working state of the provided VisPy examples.
+
+Switcheable graphics
+--------------------
+
+If your laptop comes with switcheable graphics you have to make sure to tell python to use
+your graphics card instead of the integrated Intel graphics.
+You can identify which graphics card will be used by running:
+.. code-block:: python
+   >>> import vispy
+   >>> print(vispy.sys_info())
+
+and look for Nvidia in the ``GL version``. For example: ``GL version:  '4.6.0 NVIDIA 390.25'``.
+
+
+Windows
+~~~~~~~
+In Windows, you should open the the Nvidia-console and add your specific python to the list of programs that should use the dedicated graphics card.
+
+Linux
+~~~~~
+On Linux with the proprietary Nvidia graphics drivers, you should run python with ``primusrun python your_script.py``.
+
+For use with a Jupyter kernel, say in Spyder or the ``jupyter-qtconsole``, make sure the kernel is started with ``primusrun``. For example:
+
+.. code-block:: bash
+    $ primusrun spyder3
+
+.. code-block:: bash
+    $ primusrun jupyter-qtconsole
+
+
+General
+~~~~~~~
+If you want the jupyter-qtconsole to always use your Nvidia graphics card, you can change the parameters in the default kernel. To find the default kernel, run
+
+.. code-block:: bash
+   $ jupyter kernelspec list
+
+then edit the ``kernel.json`` file to include ``"primusrun",`` as the first parameter in ``argv``. For example:
+
+.. code-block:: json
+   {
+     "argv": [
+       "primusrun",
+       "python",
+       "-m",
+       "ipykernel_launcher",
+       "-f",
+       "{connection_file}"
+     ],
+     "language": "python",
+     "display_name": "Python 3"
+   }
+
+Spyder has it's own configuration and I don't know exactly how to make its console run with ``primusrun`` without running ``primusrun spyder3``.
+
+Jupyter notebook
+~~~~~~~~~~~~~~~~
+Instructions to come.
