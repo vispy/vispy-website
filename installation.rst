@@ -112,8 +112,8 @@ check if everything is ok. To do this, just type:
 
 Please note that the test suite may be unstable on some systems. Any potential instability in the test suite does not necessarily imply instability in the working state of the provided VisPy examples.
 
-Usage
-=====
+Usage in an interactive console
+===============================
 
 If running from a jupyter console, either the ``jupyter-qtconsole``, the ``jupyter-console``, or,
 the console within `Spyder <https://pythonhosted.org/spyder/>`_, you may need to ensure a few other
@@ -123,6 +123,7 @@ Before using any VisPy code, we recommend running the following commands when st
 kernel
 
 .. code-block:: python
+
      >>> %gui qt
      >>> # your vispy code
 
