@@ -119,14 +119,11 @@ If running from a jupyter console, either the ``jupyter-qtconsole``, the ``jupyt
 the console within `Spyder <https://pythonhosted.org/spyder/>`_, you may need to ensure a few other
 `IPython magic <https://ipython.org/ipython-doc/3/interactive/tutorial.html#magic-functions>`_
 functions are called prior to using vispy in a given kernel.
-To use the ``%pylab`` magici command, you will need to install ``matplotlib`` using your favorite
-method for installing python packages.
 Before using any VisPy code, we recommend running the following commands when starting your python
 kernel
 
 .. code-block:: python
      >>> %gui qt
-     >>> %pylab qt
      >>> # your vispy code
 
 Namely, this has the effect of sharing the event loop between application and the interactive
