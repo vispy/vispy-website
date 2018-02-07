@@ -10,6 +10,8 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
+from datetime import date
+
 import sphinx_bootstrap_theme
 import sys
 import os
@@ -52,7 +54,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = u'VisPy'
-copyright = u'2013-2017, VisPy developers'
+copyright = u'2013-{}, VisPy developers'.format(date.today().year)
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
