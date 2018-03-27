@@ -2,6 +2,10 @@
 Release notes
 =============
 
+**Vispy 0.5.3**
+
+* Workaround added to fix ImportError with matplotlib 2.2+ (#1437)
+
 **Vispy 0.5.2**
 
 * Fix PyPI packaging to include LICENSE.txt
