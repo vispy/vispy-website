@@ -2,10 +2,15 @@
 News
 ====
 
+2018
+----
+
+:2018/03/28: **Release!** Version 0.5.3 (:doc:`releasenotes`)
+
 2017
 ----
 
-:2017/12/11: **Release!** Version 0.5.2 (:doc:`releasenotes`)
+:2017/12/11: **Release!** Version 0.5.2
 :2017/11/04: **Release!** Version 0.5.1
 :2017/10/24: **Release!** Version 0.5.0
 
