@@ -33,6 +33,7 @@ Installation instructions
    :maxdepth: 2
 
    installation
+   raspberry
 
 
 API Reference
