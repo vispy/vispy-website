@@ -219,6 +219,7 @@ you can change the parameters in the default kernel. To find the default
 kernel, run
 
 .. code-block:: bash
+
    $ jupyter kernelspec list
 
 then edit the ``kernel.json`` file to include ``"primusrun",`` as the first
