@@ -69,7 +69,7 @@ from the `conda-forge <https://conda-forge.org/>`_ channel:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge vispy
+    conda install -c conda-forge vispy
 
 Via PyPI
 --------
@@ -78,7 +78,7 @@ VisPy can also be installed with ``pip`` to install it from PyPI:
 
 .. code-block:: console
 
-   $ pip install --upgrade vispy
+    pip install --upgrade vispy
 
 Once the python dependencies have been installed, install the latest
 proprietary drivers for your computer's GPU. Generally these drivers may be
@@ -94,16 +94,16 @@ available in the python environment:
 
 .. code-block:: console
 
-   $ git clone git://github.com/vispy/vispy.git  # creates "vispy" folder
-   $ cd vispy
-   $ pip install -e .
+    git clone git://github.com/vispy/vispy.git  # creates "vispy" folder
+    cd vispy
+    pip install -e .
 
 To run the latest development version without cloning the repository, you
 can also use this line:
 
 .. code-block:: console
 
-   $ pip install git+https://github.com/vispy/vispy.git
+    pip install git+https://github.com/vispy/vispy.git
 
 Jupyter Extension
 -----------------
@@ -129,9 +129,9 @@ following:
 
 .. code-block:: console
 
-    $ conda install -c conda-forge nodejs  # or some other way to have a recent node
-    $ jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    $ jupyter labextension install vispy
+    conda install -c conda-forge nodejs  # or some other way to have a recent node
+    jupyter labextension install @jupyter-widgets/jupyterlab-manager
+    jupyter labextension install vispy
 
 Testing installation
 --------------------

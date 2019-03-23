@@ -52,6 +52,7 @@ API Reference
    vispy.scene - The system underlying the upcoming high-level visualization interfaces [experimental] <scene>
    vispy.visuals - The visuals that are used for high-level plotting <visuals>
    vispy.util - Miscellaneous utilities <util>
+   GLIR Specification <gloo.glir.rst>
    releasenotes
 
 
