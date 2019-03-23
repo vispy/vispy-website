@@ -146,3 +146,21 @@ check if everything is ok. To do this, just type:
    ...
 
 Please note that the test suite may be unstable on some systems. Any potential instability in the test suite does not necessarily imply instability in the working state of the provided VisPy examples.
+
+Usage in an interactive console
+===============================
+
+If running from a jupyter console, either the ``jupyter-qtconsole``, the ``jupyter-console``, or,
+the console within `Spyder <https://pythonhosted.org/spyder/>`_, you may need to ensure a few other
+`IPython magic <https://ipython.org/ipython-doc/3/interactive/tutorial.html#magic-functions>`_
+functions are called prior to using vispy in a given kernel.
+Before using any VisPy code, we recommend running the following commands when starting your python
+kernel
+
+.. code-block:: python
+
+     >>> %gui qt
+     >>> # your vispy code
+
+Namely, this has the effect of sharing the event loop between application and the interactive
+console allowing you use both simultaneously.
