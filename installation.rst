@@ -2,26 +2,23 @@
 Installation
 ============
 
-
 Package requirements
 ====================
 
 The only mandatory requirement for VisPy is the `numpy <http://numpy.org>`_
 package.
 
-
 Backend requirements
 ====================
 
 VisPy requires at least one toolkit for opening a window and creates an OpenGL
-context. This can be done using one Qt, GLFW,SDL2, Wx, or Pyglet. You can also
-use a Jupyter notebook (version 3+) with WebGL for some visualizations although
-it is not fully functional at this time.
+context. This can be done using one Qt, GLFW, SDL2, Wx, or Pyglet. You can also
+use a Jupyter notebook with WebGL for some visualizations although some visuals
+may not be possible (ex. volume rendering).
 
 .. warning::
 
    You only need to have one of these packages, no need to install them all!
-
 
 Hardware requirements
 =====================
@@ -64,31 +61,42 @@ the `Miniconda <https://conda.io/miniconda.html>`_ package also from
 Continuum Analytics. Once Anaconda is installed, create a
 `conda python environment <https://conda.io/docs/user-guide/tasks/manage-python.html>`_.
 
-Next, install the following VisPy dependencies directly through `pip` or the Anaconda package installer.
+Via conda
+---------
+
+VisPy can be installed in a conda environment by using the package available
+from the `conda-forge <https://conda-forge.org/>`_ channel:
 
 .. code-block:: console
 
-    $ conda install numpy pyqt
+    $ conda install -c conda-forge vispy
 
-Once the python dependencies have been installed, install the latest
-proprietary drivers for your computer's GPU. Generally these drivers may be
-downloaded from the GPU manufacturer's website.
+Via PyPI
+--------
 
-**To install the latest release version**, you can do:
+VisPy can also be installed with ``pip`` to install it from PyPI:
 
 .. code-block:: console
 
    $ pip install --upgrade vispy
 
+Once the python dependencies have been installed, install the latest
+proprietary drivers for your computer's GPU. Generally these drivers may be
+downloaded from the GPU manufacturer's website.
+
+Via GitHub
+----------
+
 **If you want to run the latest development version**, you can clone the
-repository to your local machine and install with ``develop`` to enable easy
-updates to latest ``master``:
+repository to your local machine and install vispy in "development" mode.
+This means that any changes to the cloned repository will be immediately
+available in the python environment:
 
 .. code-block:: console
 
    $ git clone git://github.com/vispy/vispy.git  # creates "vispy" folder
    $ cd vispy
-   $ python setup.py develop
+   $ pip install -e .
 
 To run the latest development version without cloning the repository, you
 can also use this line:
@@ -97,6 +105,33 @@ can also use this line:
 
    $ pip install git+https://github.com/vispy/vispy.git
 
+Jupyter Extension
+-----------------
+
+If you would like to use the VisPy Jupyter Widget you must first install
+the ``ipywidgets`` library and enable the extension by doing:
+
+.. code-block:: console
+
+    pip install ipywidgets
+    jupyter nbextension enable --py vispy
+
+When using `virtualenv <https://virtualenv.pypa.io/en/stable/>`_ and working in
+an activated virtual environment, the ``--sys-prefix`` option may be required
+to enable the extension and keep the environment isolated (i.e.
+``jupyter nbextension enable --py widgetsnbextension --sys-prefix``).
+
+JupyterLab
+----------
+
+To install the JupyterLab extension you need to install it explicitly with the
+following:
+
+.. code-block:: console
+
+    $ conda install -c conda-forge nodejs  # or some other way to have a recent node
+    $ jupyter labextension install @jupyter-widgets/jupyterlab-manager
+    $ jupyter labextension install vispy
 
 Testing installation
 --------------------
