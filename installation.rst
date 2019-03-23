@@ -145,17 +145,21 @@ check if everything is ok. To do this, just type:
    >>> vispy.test()
    ...
 
-Please note that the test suite may be unstable on some systems. Any potential instability in the test suite does not necessarily imply instability in the working state of the provided VisPy examples.
+Please note that the test suite may be unstable on some systems. Any potential
+instability in the test suite does not necessarily imply instability in the
+working state of the provided VisPy examples.
 
 Usage in an interactive console
 ===============================
 
-If running from a jupyter console, either the ``jupyter-qtconsole``, the ``jupyter-console``, or,
-the console within `Spyder <https://pythonhosted.org/spyder/>`_, you may need to ensure a few other
+If running from a jupyter console, either the ``jupyter-qtconsole``, the
+``jupyter-console``, or, the console within
+`Spyder <https://pythonhosted.org/spyder/>`_, you may need to ensure a few
+other
 `IPython magic <https://ipython.org/ipython-doc/3/interactive/tutorial.html#magic-functions>`_
-functions are called prior to using vispy in a given kernel.
-Before using any VisPy code, we recommend running the following commands when starting your python
-kernel
+functions are called prior to using vispy in a given kernel. Before using any
+VisPy code, we recommend running the following commands when starting your
+python kernel:
 
 .. code-block:: python
 
@@ -166,10 +170,10 @@ Namely, this has the effect of sharing the event loop between application and th
 console allowing you use both simultaneously.
 
 Switchable graphics
---------------------
+===================
 
-If your laptop comes with switchable graphics you have to make sure to tell python to use
-your graphics card instead of the integrated Intel graphics.
+If your laptop comes with switchable graphics you have to make sure to tell
+python to use your graphics card instead of the integrated Intel graphics.
 You can identify which graphics card will be used by running:
 
 .. code-block:: python
@@ -177,19 +181,26 @@ You can identify which graphics card will be used by running:
    >>> import vispy
    >>> print(vispy.sys_info())
 
-and look for Nvidia in the ``GL version``. For example: ``GL version:  '4.6.0 NVIDIA 390.25'``.
+and look for Nvidia in the ``GL version``. For example:
+``GL version:  '4.6.0 NVIDIA 390.25'``.
 
 
 Windows
-~~~~~~~
-In Windows, you should open the the Nvidia-console and add your specific python to the list of programs that should use the dedicated graphics card.
-Note that this setting is seperate for different conda environments so make sure you have selected the one you are using VisPy with.
+-------
+
+In Windows, you should open the the Nvidia-console and add your specific
+python to the list of programs that should use the dedicated graphics card.
+Note that this setting is seperate for different conda environments so make
+sure you have selected the one you are using VisPy with.
 
 Linux
-~~~~~
-On Linux with the proprietary Nvidia graphics drivers, you should run python with ``primusrun python your_script.py``.
+-----
 
-For use with a Jupyter kernel, say in Spyder or the ``jupyter-qtconsole``, make sure the kernel is started with ``primusrun``. For example:
+On Linux with the proprietary Nvidia graphics drivers, you should run python
+with ``primusrun python your_script.py``.
+
+For use with a Jupyter kernel, say in Spyder or the ``jupyter-qtconsole``,
+make sure the kernel is started with ``primusrun``. For example:
 
 .. code-block:: bash
 
@@ -200,14 +211,18 @@ For use with a Jupyter kernel, say in Spyder or the ``jupyter-qtconsole``, make 
     $ primusrun jupyter-qtconsole
 
 
-General
-~~~~~~~
-If you want the jupyter-qtconsole to always use your Nvidia graphics card, you can change the parameters in the default kernel. To find the default kernel, run
+Modifyin default jupyter kernel
+-------------------------------
+
+If you want the jupyter-qtconsole to always use your Nvidia graphics card,
+you can change the parameters in the default kernel. To find the default
+kernel, run
 
 .. code-block:: bash
    $ jupyter kernelspec list
 
-then edit the ``kernel.json`` file to include ``"primusrun",`` as the first parameter in ``argv``. For example:
+then edit the ``kernel.json`` file to include ``"primusrun",`` as the first
+parameter in ``argv``. For example:
 
 .. code-block:: json
 
@@ -224,10 +239,8 @@ then edit the ``kernel.json`` file to include ``"primusrun",`` as the first para
      "display_name": "Python 3"
    }
 
-Using a similar configuration, you could have two kernels configurations, one for the dedicated graphics card, and one for the integrated graphics.
+Using a similar configuration, you could have two kernels configurations, one
+for the dedicated graphics card, and one for the integrated graphics.
 
-Spyder has it's own configuration and I don't know exactly how to make its console run with ``primusrun`` without running ``primusrun spyder3``.
-
-Jupyter notebook
-~~~~~~~~~~~~~~~~
-Instructions to come.
+Spyder has it's own configuration and I don't know exactly how to make its
+console run with ``primusrun`` without running ``primusrun spyder3``.
