@@ -96,6 +96,7 @@ available in the python environment:
 
     git clone git://github.com/vispy/vispy.git  # creates "vispy" folder
     cd vispy
+    git submodule update --init --recursive # create/initialize 'doc' and 'js' directories
     pip install -e .
 
 To run the latest development version without cloning the repository, you
@@ -114,12 +115,16 @@ the ``ipywidgets`` library and enable the extension by doing:
 .. code-block:: console
 
     pip install ipywidgets
+    jupyter nbextension enable --py widgetsnbextension
     jupyter nbextension enable --py vispy
 
 When using `virtualenv <https://virtualenv.pypa.io/en/stable/>`_ and working in
 an activated virtual environment, the ``--sys-prefix`` option may be required
 to enable the extension and keep the environment isolated (i.e.
 ``jupyter nbextension enable --py widgetsnbextension --sys-prefix``).
+
+Note if you have an old version of the extension installed you mean need to
+manually delete it from `<python-prefix>/share/nbextensions/vispy`>
 
 JupyterLab
 ----------
@@ -132,6 +137,9 @@ following:
     conda install -c conda-forge nodejs  # or some other way to have a recent node
     jupyter labextension install @jupyter-widgets/jupyterlab-manager
     jupyter labextension install vispy
+
+If you have a "vispy" directory in your current directory this will try to
+install from there, use `vispy@latest` instead.
 
 Testing installation
 --------------------
