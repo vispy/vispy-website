@@ -106,11 +106,11 @@ can also use this line:
 
     pip install git+https://github.com/vispy/vispy.git
 
-Jupyter Extension
------------------
+Jupyter Notebook Extension
+--------------------------
 
-If you would like to use the VisPy Jupyter Widget you must first install
-the ``ipywidgets`` library and enable the extension by doing:
+If you would like to use the VisPy Jupyter Notebook Widget you must first
+install the ``ipywidgets`` library and enable the extension by doing:
 
 .. code-block:: console
 
@@ -125,6 +125,21 @@ to enable the extension and keep the environment isolated (i.e.
 
 Note if you have an old version of the extension installed you mean need to
 manually delete it from `<python-prefix>/share/nbextensions/vispy`>
+
+If you are installing vispy from source in a "development mode" you may need
+to explicitly install the extension before enabling it (using the symlink
+option to link the extension to your active development environment):
+
+.. code-block:: console
+
+    jupyter nbextension install --symlink --py vispy --sys-prefix
+
+.. note::
+
+    The Jupyter-based backend and extension should be considered experimental
+    due to performance limitations; both by the WebGL standard and what is
+    currently implemented in vispy. Users should strongly consider these
+    limitations before using vispy for an operational WebGL application.
 
 JupyterLab
 ----------
