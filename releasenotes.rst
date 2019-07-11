@@ -2,6 +2,16 @@
 Release notes
 =============
 
+**Vispy 0.6.0**
+
+* Update PyQt5/PySide2 to use newer GL API
+* Update to PyQt5 as default backend
+* New Cython-based text rendering option
+* New WindbarbVisual
+* Improved JupyterLab/Notebook widget (experimental)
+* Fix various memory leaks
+* Various optimizations and bug fixes
+
 **Vispy 0.5.3**
 
 * Workaround added to fix ImportError with matplotlib 2.2+ (#1437)
