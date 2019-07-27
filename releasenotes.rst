@@ -2,6 +2,12 @@
 Release notes
 =============
 
+**Vispy 0.6.1**
+
+* Fix discrete colormap ordering (#1668)
+* Fix various examples (#1671, #1676)
+* Fix Jupyter extension zoom direction (#1679)
+
 **Vispy 0.6.0**
 
 * Update PyQt5/PySide2 to use newer GL API

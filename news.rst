@@ -5,7 +5,8 @@ News
 2019
 ----
 
-:2019/07/11: **Release!** Version 0.6.0 (:doc:`releasenotes`)
+:2019/07/27: **Release!** Version 0.6.1 (:doc:`releasenotes`)
+:2019/07/11: **Release!** Version 0.6.0
 
 2018
 ----
