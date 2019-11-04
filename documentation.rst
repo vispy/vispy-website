@@ -53,7 +53,7 @@ API Reference
    vispy.visuals - The visuals that are used for high-level plotting <visuals>
    vispy.util - Miscellaneous utilities <util>
    GLIR Specification <gloo.glir.rst>
-   releasenotes
+   Release Notes <https://github.com/vispy/vispy/blob/master/CHANGELOG.md>
 
 
 Indices and tables

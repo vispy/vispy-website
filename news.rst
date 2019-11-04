@@ -5,7 +5,8 @@ News
 2019
 ----
 
-:2019/07/27: **Release!** Version 0.6.1 (:doc:`releasenotes`)
+:2019/11/04: **Release!** Version 0.6.2 (`Release Notes <https://github.com/vispy/vispy/blob/master/CHANGELOG.md>`_)
+:2019/07/27: **Release!** Version 0.6.1
 :2019/07/11: **Release!** Version 0.6.0
 
 2018
