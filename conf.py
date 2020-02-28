@@ -412,6 +412,6 @@ def linkcode_resolve(domain, info):
     if 'dev' in release:
         kind = 'master'
     else:
-        kind = '%s' % (version,)  # major.minor only
+        kind = 'v%s' % (vispy.__version__,)
     return "https://github.com/vispy/vispy/blob/%s/vispy/%s%s" % (  # noqa
        kind, fn, linespec)
