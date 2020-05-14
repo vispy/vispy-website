@@ -399,6 +399,9 @@ def linkcode_resolve(domain, info):
 
     try:
         source, lineno = inspect.getsourcelines(obj)
+    except TypeError:
+        # getting thrown on updating-property decorator
+        return None
     except OSError:
         source = ""
         lineno = None
