@@ -2,10 +2,15 @@
 News
 ====
 
+2020
+----
+
+:2020/09/24: **Release!** Version 0.6.5 (`Release Notes <https://github.com/vispy/vispy/blob/master/CHANGELOG.md>`_)
+
 2019
 ----
 
-:2019/12/13: **Release!** Version 0.6.4 (`Release Notes <https://github.com/vispy/vispy/blob/master/CHANGELOG.md>`_)
+:2019/12/13: **Release!** Version 0.6.4
 :2019/11/27: **Release!** Version 0.6.3
 :2019/11/04: **Release!** Version 0.6.2
 :2019/07/27: **Release!** Version 0.6.1
