@@ -36,7 +36,14 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.intersphinx',
               'sphinx.ext.linkcode',
               'numpydoc',
+              'sphinxcontrib.apidoc',
               ]
+
+# API docs
+apidoc_module_dir = "../vispy"
+apidoc_output_dir = "api"
+apidoc_excluded_paths = ["../vispy/ext"]
+apidoc_separate_modules = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
