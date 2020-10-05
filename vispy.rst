@@ -1,5 +1,0 @@
-Vispy
-=====
-
-.. automodule:: vispy
-    :members:
