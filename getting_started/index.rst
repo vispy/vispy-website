@@ -1,4 +1,4 @@
-Getting started
+Getting Started
 ===============
 
 VisPy strives to provide an easy path for users to make fast interactive

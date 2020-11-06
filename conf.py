@@ -129,6 +129,8 @@ html_context = {
 # documentation.
 html_theme_options = {
     "use_edit_page_button": True,
+    "github_url": "https://github.com/vispy/vispy",
+    "twitter_url": "https://twitter.com/vispyproject",
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
@@ -143,7 +145,7 @@ html_title = 'VisPy'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "_static/vispy-text-white.png"
+html_logo = "_static/vispy-teaser-short.png"
 
 
 # The name of an image file (within the static path) to use as favicon of the
@@ -308,15 +310,12 @@ def setup(app):
 # Source code links
 # -----------------------------------------------------------------------------
 
-import re
 import inspect
 from os.path import relpath, dirname
 
 
 def linkcode_resolve(domain, info):
-    """
-    Determine the URL corresponding to Python object
-    """
+    """Determine the URL corresponding to Python object."""
     if domain != 'py':
         return None
 

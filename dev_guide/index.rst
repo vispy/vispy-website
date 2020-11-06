@@ -1,5 +1,5 @@
-Developers Guide
-================
+Developer's Guide
+=================
 
 The following pages describe information for contributing and maintaining the
 VisPy library. A normal user experience should not require knowing any of this

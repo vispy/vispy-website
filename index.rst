@@ -79,22 +79,26 @@ Processing Units (GPUs)** through the **OpenGL** library to display very
 large datasets.
 
 .. toctree::
+  :caption: Getting VisPy
   :maxdepth: 1
 
   installation
+
+.. toctree::
+  :caption: Learning VisPy
+  :maxdepth: 2
+
   getting_started/index
-  community
+
+.. toctree::
+  :caption: Additional Help
+  :maxdepth: 2
+
+  Documentation <overview>
+
+.. toctree::
+  :hidden:
+
   gallery
-  news
-  resources
-  dev_guide/index
   API <api/modules>
-
-
-Indices and tables
-==================
-
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
-
+  news
