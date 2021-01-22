@@ -30,3 +30,24 @@ types of Visuals in VisPy and more complex use cases. As a last resort for
 the most complex cases, a custom Visual (custom shader code) may be necessary.
 Before writing a custom Visual, check with VisPy maintainers by asking a
 question on gitter or creating a question as a GitHub issue.
+
+Is VisPy multi-threaded or thread-safe?
+---------------------------------------
+
+VisPy does not have any special multi-thread or multi-process handling except
+for the funcionality provided by the GUI framework backends that it uses. For
+example, PyQt5/PySide2 provide QThread objects for running code in another
+thread. These libraries also provide ways of transferring data safely or
+communicating between threads; mainly signals and slots. However, there is a
+limit to what operations can be performed outside the main thread.
+
+The main or GUI thread for most GUI frameworks is the **only** thread that can
+perform drawing operations or operations that will trigger drawing. This
+includes OpenGL functions. This means
+that calling ``self.update()`` on a VisPy ``Canvas`` or ``Visual`` object must
+ultimately be done in the main thread. Data that will be drawn can be created
+or updated in a secondary thread, but the main/GUI thread must still be the
+one to do the redraw. Since many Visual objects automatically call
+``self.update()`` for property or data modifications this can be difficult to
+do in the most performant way. Updates or requests for changes to better support
+thread-safe data updates are welcome.

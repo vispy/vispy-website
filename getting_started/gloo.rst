@@ -67,7 +67,8 @@ Let's go through this code one chunk at a time:
 
 .. note::
 
-    The above code is also available in the ``examples/basics/gloo/start.py``
+    The above code is also available in the
+    `examples/basics/gloo/start.py <https://github.com/vispy/vispy/blob/master/examples/basics/gloo/start.py>`_
     script.
 
 Basic Script (Alternative)
@@ -109,55 +110,51 @@ the below code.
 
 .. code-block:: python
 
-    from vispy import gloo
-    from vispy import app
-    import numpy as np
+    from vispy import app, gloo
+    from vispy.gloo import Program
 
-    # Create vertices
-    vPosition = np.array([[-0.8, -0.8, 0.0], [+0.7, -0.7, 0.0],
-                          [-0.7, +0.7, 0.0], [+0.8, +0.8, 0.0, ]], np.float32)
+    vertex = """
+        attribute vec4 color;
+        attribute vec2 position;
+        varying vec4 v_color;
+        void main()
+        {
+            gl_Position = vec4(position, 0.0, 1.0);
+            v_color = color;
+        } """
 
-
-    VERT_SHADER = """ // simple vertex shader
-    attribute vec3 a_position;
-    void main (void) {
-        gl_Position = vec4(a_position, 1.0);
-    }
-    """
-
-    FRAG_SHADER = """ // simple fragment shader
-    uniform vec4 u_color;
-    void main()
-    {
-        gl_FragColor = u_color;
-    }
-    """
+    fragment = """
+        varying vec4 v_color;
+        void main()
+        {
+            gl_FragColor = v_color;
+        } """
 
 
     class Canvas(app.Canvas):
-
         def __init__(self):
-            app.Canvas.__init__(self, keys='interactive')
+            super().__init__(size=(512, 512), title='Colored quad',
+                             keys='interactive')
 
-            # Create program
-            self._program = gloo.Program(VERT_SHADER, FRAG_SHADER)
+            # Build program
+            self.program = Program(vertex, fragment, count=4)
 
-            # Set uniform and attribute
-            self._program['u_color'] = 0.2, 1.0, 0.4, 1
-            self._program['a_position'] = gloo.VertexBuffer(vPosition)
+            # Set uniforms and attributes
+            self.program['color'] = [(1, 0, 0, 1), (0, 1, 0, 1),
+                                     (0, 0, 1, 1), (1, 1, 0, 1)]
+            self.program['position'] = [(-1, -1), (-1, +1),
+                                        (+1, -1), (+1, +1)]
 
-            gloo.set_clear_color('white')
+            gloo.set_viewport(0, 0, *self.physical_size)
 
             self.show()
 
-        def on_resize(self, event):
-            width, height = event.physical_size
-            gloo.set_viewport(0, 0, width, height)
-
         def on_draw(self, event):
             gloo.clear()
-            self._program.draw('triangle_strip')
+            self.program.draw('triangle_strip')
 
+        def on_resize(self, event):
+            gloo.set_viewport(0, 0, *event.physical_size)
 
     if __name__ == '__main__':
         c = Canvas()
@@ -179,8 +176,196 @@ user resizes the GUI window we can update the size of the OpenGL canvas
 setting it to the "clear color" of white, and then tell our GL Program to draw
 or execute itself.
 
-Future
+When we run this example we should see something like this:
+
+.. image:: https://github.com/vispy/images/raw/master/gallery/tutorial__gloo__colored_quad.png
+   :width: 600
+   :alt: Screenshot of examples/tutorial/gloo/colored_quad.py example script.
+
+This shape was created by drawing a ``"triangle_strip"`` using the coordinates
+we assigned to the `position` attribute. Colors are interpolated between the
+4 colors we assigned to each vertex (``color``) automatically by the GPU.
+Under the hood, VisPy automatically
+converts these positions and colors to numpy arrays. For the positions it
+creates a
+:class:`~vispy.gloo.buffer.VertexBuffer` object to store them. We could have
+done this ourselves by replacing this line with:
+
+.. code-block:: python
+
+    self._program['position'] = gloo.VertexBuffer(pos_np_arr)
+
+With this basic template, you can now start modifying the shader code,
+or provide different uniforms and attributes. With the right setup, you can
+also change the drawing method used (ex. 'points' or 'lines' instead of
+'triangle_strip').
+
+.. note::
+
+    The above code is also available in the
+    `examples/tutorial/gloo/colored_quad.py <https://github.com/vispy/vispy/blob/master/examples/tutorial/gloo/colored_quad.py>`_
+    script.
+
+Timers
 ------
 
-More instructions coming soon...
+A common requirement of any visualization is to make changes over time. VisPy
+provides a generic :class:`~vispy.app.timer.Timer` class to help with this.
+Let's take the quad example above and make a few modifications. First, we'll
+create a :class:`~vispy.app.timer.Timer` in the ``Canvas.__init__`` method.
+We'll also define a ``clock`` instance variable to use in our shader later
+and then we'll start the timer.
 
+.. code-block:: python
+
+    self.program['theta'] = 0.0
+    self.timer = app.Timer('auto', self.on_timer)
+    self.clock = 0
+    self.timer.start()
+
+We first set a new uniform in our shader called ``theta`` which we'll
+use later on. The ``'auto'`` setting tells the timer to fire as quickly as
+quickly as it can (in between drawing and other GUI events). We've connected
+this timer to a new ``on_timer`` method which will be executed whenever the
+timer is triggered.
+
+.. code-block:: python
+
+    def on_timer(self, event):
+        self.clock += 0.001 * 1000.0 / 60.
+        self.program['theta'] = self.clock
+        self.update()
+
+In this method, we're updating our special ``clock`` counter variable,
+updating that ``theta`` uniform in our shader, and finally we call
+``self.update()`` which tells the ``Canvas`` to start redrawing itself.
+
+.. note::
+
+    The method name ``on_timer`` is by convention, but can be named anything.
+
+Lastly, we update our vertex shader so the coordinates we provide to the
+OpenGL program are adjusted based on our new ``theta`` uniform.
+
+.. code-block:: python
+
+    vertex = """
+        uniform float theta;
+        attribute vec4 color;
+        attribute vec2 position;
+        varying vec4 v_color;
+        void main()
+        {
+            float ct = cos(theta);
+            float st = sin(theta);
+            float x = 0.75* (position.x*ct - position.y*st);
+            float y = 0.75* (position.x*st + position.y*ct);
+            gl_Position = vec4(x, y, 0.0, 1.0);
+            v_color = color;
+        } """
+
+Putting it all together our new script looks like this:
+
+.. code-block:: python
+
+    from vispy import gloo, app
+    from vispy.gloo import Program
+
+    vertex = """
+        uniform float theta;
+        attribute vec4 color;
+        attribute vec2 position;
+        varying vec4 v_color;
+        void main()
+        {
+            float ct = cos(theta);
+            float st = sin(theta);
+            float x = 0.75* (position.x*ct - position.y*st);
+            float y = 0.75* (position.x*st + position.y*ct);
+            gl_Position = vec4(x, y, 0.0, 1.0);
+            v_color = color;
+        } """
+
+    fragment = """
+        varying vec4 v_color;
+        void main()
+        {
+            gl_FragColor = v_color;
+        } """
+
+
+    class Canvas(app.Canvas):
+        def __init__(self):
+            super().__init__(size=(512, 512), title='Rotating quad',
+                             keys='interactive')
+            # Build program & data
+            self.program = Program(vertex, fragment, count=4)
+            self.program['color'] = [(1, 0, 0, 1), (0, 1, 0, 1),
+                                     (0, 0, 1, 1), (1, 1, 0, 1)]
+            self.program['position'] = [(-1, -1), (-1, +1),
+                                        (+1, -1), (+1, +1)]
+            self.program['theta'] = 0.0
+
+            gloo.set_viewport(0, 0, *self.physical_size)
+            gloo.set_clear_color('white')
+
+            self.timer = app.Timer('auto', self.on_timer)
+            self.clock = 0
+            self.timer.start()
+
+            self.show()
+
+        def on_draw(self, event):
+            gloo.clear()
+            self.program.draw('triangle_strip')
+
+        def on_resize(self, event):
+            gloo.set_viewport(0, 0, *event.physical_size)
+
+        def on_timer(self, event):
+            self.clock += 0.001 * 1000.0 / 60.
+            self.program['theta'] = self.clock
+            self.update()
+
+
+    if __name__ == '__main__':
+        c = Canvas()
+        app.run()
+
+The end result is a 2D square that rotates for every timer event.
+
+.. note::
+
+    The above code is also available in the
+    `examples/tutorial/gloo/rotating_quad.py <https://github.com/vispy/vispy/blob/master/examples/tutorial/gloo/rotating_quad.py>`_
+    script.
+
+Keyboard Events
+---------------
+
+So far our examples haven't included any user interaction. The easiest way
+to include some is to attach meaning to certain key presses. We can update
+our example to include a "pause" button on the animation. We add one new
+method to handle all keyboard events.
+
+.. code-block:: python
+
+    def on_key_press(self, event):
+        if event.text == ' ':
+            if self.timer.running:
+                self.timer.stop()
+            else:
+                self.timer.start()
+
+This method is automatically executed when the ``Canvas`` detects a key press.
+The ``event.text`` is used to check for the Spacebar being pressed. If the
+timer is running, we stop it, otherwise we start it.
+
+Other Topics
+------------
+
+That's it for the "Getting Started" topics for the gloo interface. Now it is
+time to get coding and exploring the other parts of the documentation. If you
+think something is missing here and would make for a really good
+"Getting Started" topic, please create an issue on GitHub. See
+:doc:`../community` for more information.
