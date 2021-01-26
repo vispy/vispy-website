@@ -15,9 +15,9 @@ Gallery
 
 .. container:: row
 
-   .. container:: col-sm-6 col-md-3
+   .. container:: col-sm-12 col-md-4
 
-      .. container:: thumbnail
+      .. container:: img-thumbnail
 
          .. image:: _static/screenshots/thumbnails/fireworks.png
             :width: 100%
@@ -39,9 +39,9 @@ Gallery
                <span class="fa fa-github"></span> Sources </a>
 
 
-   .. container:: col-sm-6 col-md-3
+   .. container:: col-sm-12 col-md-4
 
-      .. container:: thumbnail
+      .. container:: img-thumbnail
 
          .. image:: _static/screenshots/thumbnails/galaxy.png
             :width: 100%
@@ -64,9 +64,9 @@ Gallery
                </a>
 
 
-   .. container:: col-sm-6 col-md-3
+   .. container:: col-sm-12 col-md-4
 
-      .. container:: thumbnail
+      .. container:: img-thumbnail
 
          .. image:: _static/screenshots/thumbnails/voronoi.png
             :width: 100%
@@ -89,9 +89,9 @@ Gallery
                </a>
 
 
-   .. container:: col-sm-6 col-md-3
+   .. container:: col-sm-12 col-md-4
 
-      .. container:: thumbnail
+      .. container:: img-thumbnail
 
          .. image:: _static/screenshots/thumbnails/high-frequency.png
             :width: 100%
@@ -115,9 +115,9 @@ Gallery
 
 
 
-   .. container:: col-sm-6 col-md-3
+   .. container:: col-sm-12 col-md-4
 
-      .. container:: thumbnail
+      .. container:: img-thumbnail
 
          .. image:: _static/screenshots/thumbnails/gloo-cloud.png
             :width: 100%
@@ -139,9 +139,9 @@ Gallery
                </a>
 
 
-   .. container:: col-sm-6 col-md-3
+   .. container:: col-sm-12 col-md-4
 
-      .. container:: thumbnail
+      .. container:: img-thumbnail
 
          .. image:: _static/screenshots/thumbnails/mandelbrot.png
             :width: 100%
@@ -164,9 +164,9 @@ Gallery
                </a>
 
 
-   .. container:: col-sm-6 col-md-3
+   .. container:: col-sm-12 col-md-4
 
-      .. container:: thumbnail
+      .. container:: img-thumbnail
 
          .. image:: _static/screenshots/thumbnails/grayscott.png
             :width: 100%
@@ -189,9 +189,9 @@ Gallery
                </a>
 
 
-   .. container:: col-sm-6 col-md-3
+   .. container:: col-sm-12 col-md-4
 
-      .. container:: thumbnail
+      .. container:: img-thumbnail
 
          .. image:: _static/screenshots/thumbnails/collection-custom-lines.png
             :width: 100%

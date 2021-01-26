@@ -4,8 +4,7 @@ Resources
 
 .. container:: lead
 
-   There is a actually a lot of online resources, here is only a small selection.
-
+   There are actually a lot of online resources, here is only a small selection.
 
 
 Learning
@@ -102,7 +101,6 @@ Visualisation
 :Kivy: `Kivy <http://kivy.org/#home>`_ is an open source Python library for
   rapid development of applications that make use of innovative user interfaces,
   such as multi-touch apps
-
 
 
 Scientific Articles

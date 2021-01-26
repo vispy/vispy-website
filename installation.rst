@@ -238,8 +238,8 @@ make sure the kernel is started with ``primusrun``. For example:
     $ primusrun jupyter-qtconsole
 
 
-Modifyin default jupyter kernel
--------------------------------
+Modifying default jupyter kernel
+--------------------------------
 
 If you want the jupyter-qtconsole to always use your Nvidia graphics card,
 you can change the parameters in the default kernel. To find the default
@@ -272,3 +272,13 @@ for the dedicated graphics card, and one for the integrated graphics.
 
 Spyder has it's own configuration and I don't know exactly how to make its
 console run with ``primusrun`` without running ``primusrun spyder3``.
+
+Embedded System Installation
+============================
+
+.. toctree::
+  :maxdepth: 1
+
+  raspberry
+
+

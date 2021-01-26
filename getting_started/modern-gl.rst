@@ -6,7 +6,7 @@ OpenGL has evolved over the years and a big change occurred in 2003 with the
 introduction of the dynamic pipeline (OpenGL 2.0), i.e. the use of shaders that
 allow to have direct access to the GPU.
 
-.. image:: _static/gl-history.png
+.. image:: /_static/gl-history.png
 
 Before this version, OpenGL was using a fixed pipeline and you may still find a
 lot of tutorials that still use this fixed pipeline. This introduces some
@@ -29,7 +29,7 @@ shaders (there are many types depending on the version of OpenGL you're using),
 they will act at different stage of the rendering pipeline. To simplify this
 tutorial, we'll use only **vertex** and **fragment** shader as shown below:
 
-.. image:: _static/gl-pipeline.png
+.. image:: /_static/gl-pipeline.png
 
 A vertex shader acts on vertices and is supposed to output the vertex
 **position** (→ ``gl_Position``) on the viewport (i.e. screen). A fragment shader
@@ -193,7 +193,7 @@ rendered while objects outside won't. On the image below, the yellow and red
 spheres are within the volume while the green one is not and does not appear on
 the projection.
 
-.. image:: _static/ViewFrustum.png
+.. image:: /_static/ViewFrustum.png
 
 There exist many different ways to project a 3D volume onto a 2D screen but
 we'll only use the `perspective projection
@@ -217,12 +217,12 @@ below:
 
 **Perspective matrix**
 
-.. image:: _static/frustum-matrix.png
+.. image:: /_static/frustum-matrix.png
 
 
 **Orthographic matrix**
 
-.. image:: _static/ortho-matrix.png
+.. image:: /_static/ortho-matrix.png
 
 
 At this point, it is not necessary to understand how these matrices were built.
@@ -236,7 +236,7 @@ field of view in the horizontal and vertical direction:
 
 **Perspective matrix**
 
-.. image:: _static/perspective-matrix.png
+.. image:: /_static/perspective-matrix.png
 
 where ``fovy`` specifies the field of view angle, in degrees, in the y
 direction and ``aspect`` specifies the aspect ratio that determines the field
@@ -284,7 +284,7 @@ walks through the parts that are still relevant today.
 Learning Modern 3D Graphics Programming
 ---------------------------------------
 
-This `book <http://www.arcsynthesis.org/gltut/>`_ is intended to teach you how
+This `book <https://paroj.github.io/gltut/>`_ is intended to teach you how
 to be a graphics programmer. It is not aimed at any particular graphics field;
 it is designed to cover most of the basics of 3D rendering. So if you want to
 be a game developer, a CAD program designer, do some computer visualization, or

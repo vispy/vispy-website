@@ -12,7 +12,6 @@
 # serve to show the default.
 from datetime import date
 
-import sphinx_bootstrap_theme
 import sys
 import os
 import vispy
@@ -37,8 +36,14 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.intersphinx',
               'sphinx.ext.linkcode',
               'numpydoc',
-              'bootstrap',
+              'sphinxcontrib.apidoc',
               ]
+
+# API docs
+apidoc_module_dir = "../vispy"
+apidoc_output_dir = "api"
+apidoc_excluded_paths = ["../vispy/ext"]
+apidoc_separate_modules = True
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -77,7 +82,7 @@ version = '.'.join(release.split('.')[:2])
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = ['_build', 'README.rst']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
@@ -108,80 +113,28 @@ pygments_style = 'sphinx'
 
 # The theme to use for HTML and HTML Help pages.  See the documentation for
 # a list of builtin themes.
-html_theme = 'bootstrap'
+html_theme = 'pydata_sphinx_theme'
+
+# Tell the theme where the code lives
+html_context = {
+    "github_user": "vispy",
+    # "github_repo": "vispy",
+    "github_repo": "vispy-website",
+    "github_version": "master",
+    "doc_path": "",
+}
 
 # Theme options are theme-specific and customize the look and feel of a theme
 # further.  For a list of options available for each theme, see the
 # documentation.
 html_theme_options = {
-    # Navigation bar title. (Default: ``project`` value)
-    'navbar_title': ' ',
-
-    # Tab name for entire site. (Default: "Site")
-    'navbar_site_name': "Site",
-
-    # A list of tuples containing pages or urls to link to.
-    # Valid tuples should be in the following forms:
-    #    (name, page)                 # a link to a page
-    #    (name, "/aa/bb", 1)          # a link to an arbitrary relative url
-    #    (name, "http://example.com", True) # arbitrary absolute url
-    # Note the "1" or "True" value above as the third argument to indicate
-    # an arbitrary url.
-    'navbar_links': [
-        ("Documentation", "documentation"),
-        ("Gallery", "gallery"),
-        ("Resources", "resources"),
-        ("Community", "community"),
-        ("News", "news"),
-    ],
-
-    # Render the next and previous page links in navbar. (Default: true)
-    'navbar_sidebarrel': False,
-
-    # Render the current pages TOC in the navbar. (Default: true)
-    'navbar_pagenav': True,
-
-    # Tab name for the current pages TOC. (Default: "Page")
-    'navbar_pagenav_name': "",
-
-    # Global TOC depth for "site" navbar tab. (Default: 1)
-    # Switching to -1 shows all levels.
-    'globaltoc_depth': -1,
-
-    # Include hidden TOCs in Site navbar?
-    #
-    # Note: If this is "false", you cannot have mixed ``:hidden:`` and
-    # non-hidden ``toctree`` directives in the same page, or else the build
-    # will break.
-    #
-    # Values: "true" (default) or "false"
-    'globaltoc_includehidden': "true",
-
-    # HTML navbar class (Default: "navbar") to attach to <div> element.
-    # For black navbar, do "navbar navbar-inverse"
-    'navbar_class': "navbar",
-
-    # Fix navigation bar to top of page?
-    # Values: "true" (default) or "false"
-    'navbar_fixed_top': "true",
-
-    # Location of link to source.
-    # Options are "nav" (default), "footer" or anything else to exclude.
-    'source_link_position': "footer",
-
-    # Bootswatch (http://bootswatch.com/) theme.
-    #
-    # Options are nothing with "" (default) or the name of a valid theme
-    # such as "amelia" or "cosmo".
-    'bootswatch_theme': "flatly",
-
-    # Choose Bootstrap version.
-    # Values: "3" (default) or "2" (in quotes)
-    'bootstrap_version': "3",
+    "use_edit_page_button": True,
+    "github_url": "https://github.com/vispy/vispy",
+    "twitter_url": "https://twitter.com/vispyproject",
 }
 
 # Add any paths that contain custom themes here, relative to this directory.
-html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
+# html_theme_path = sphinx_bootstrap_theme.get_html_theme_path()
 
 # The name for this set of Sphinx documents.  If None, it defaults to
 # "<project> v<release> documentation".
@@ -192,7 +145,7 @@ html_title = 'VisPy'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = "_static/vispy-text-white.png"
+html_logo = "_static/vispy-teaser-short.png"
 
 
 # The name of an image file (within the static path) to use as favicon of the
@@ -219,12 +172,12 @@ html_static_path = ['_static']
 #html_use_smartypants = True
 
 # Custom sidebar templates, maps document names to template names.
-html_sidebars = {'documentation*': ['localtoc.html', 'searchbox.html'],
-                 'installation*' : ['localtoc.html', 'searchbox.html'],
-                 'modern-gl*'    : ['localtoc.html', 'searchbox.html'],
-                 'api*'          : ['localtoc.html', 'searchbox.html'],
-#                 'resources*'    : ['localtoc.html', 'searchbox.html'],
-                 }
+# html_sidebars = {'documentation*': ['localtoc.html', 'searchbox.html'],
+#                  'installation*' : ['localtoc.html', 'searchbox.html'],
+#                  'modern-gl*'    : ['localtoc.html', 'searchbox.html'],
+#                  'api*'          : ['localtoc.html', 'searchbox.html'],
+# #                 'resources*'    : ['localtoc.html', 'searchbox.html'],
+#                  }
 
 # Additional templates that should be rendered to pages, maps page names to
 # template names.
@@ -240,13 +193,13 @@ html_sidebars = {'documentation*': ['localtoc.html', 'searchbox.html'],
 #html_split_index = False
 
 # If true, links to the reST sources are added to the pages.
-#html_show_sourcelink = True
+html_show_sourcelink = True
 
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
-html_show_sphinx = False
+html_show_sphinx = True
 
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
-html_show_copyright = False
+html_show_copyright = True
 
 # If true, an OpenSearch description file will be output, and all pages will
 # contain a <link> tag referring to it.  The value of this option must be the
@@ -349,23 +302,20 @@ intersphinx_mapping = {
 
 def setup(app):
     # Add custom CSS
-    app.add_stylesheet('css/font-mfizz.css')
-    app.add_stylesheet('css/font-awesome.css')
-    app.add_stylesheet('style.css')
+    app.add_css_file('css/font-mfizz.css')
+    app.add_css_file('css/font-awesome.css')
+    app.add_css_file('style.css')
 
 # -----------------------------------------------------------------------------
 # Source code links
 # -----------------------------------------------------------------------------
 
-import re
 import inspect
 from os.path import relpath, dirname
 
 
 def linkcode_resolve(domain, info):
-    """
-    Determine the URL corresponding to Python object
-    """
+    """Determine the URL corresponding to Python object."""
     if domain != 'py':
         return None
 
