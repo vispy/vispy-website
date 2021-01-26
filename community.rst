@@ -51,7 +51,7 @@ Community
 
       If you have a bug to report, a feature you’d like to request or a patch
       you wish to submit, please `submit an issue
-      <https://github.com/vispy/vispy/issues>`_
+      <https://github.com/vispy/vispy/issues>`_.
 
 
 
@@ -65,5 +65,6 @@ Community
    .. container:: col-md-4
 
       If you want to help with the development of vispy, join us on `GitHub
-      <https://github.com/vispy/vispy>`_.  There is also a developer's
-      mailing list.
+      <https://github.com/vispy/vispy>`_ or the
+      `Developer Gitter <https://gitter.im/vispy/vispy-dev>`_.  There is also
+      a `developer's mailing list <vispy-dev@googlegroups.com>`_.

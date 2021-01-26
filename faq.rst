@@ -51,3 +51,9 @@ one to do the redraw. Since many Visual objects automatically call
 ``self.update()`` for property or data modifications this can be difficult to
 do in the most performant way. Updates or requests for changes to better support
 thread-safe data updates are welcome.
+
+How do I cite VisPy?
+--------------------
+
+See the VisPy repository for citation information:
+https://github.com/vispy/vispy/blob/master/CITATION.rst

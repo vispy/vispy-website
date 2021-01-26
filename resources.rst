@@ -4,7 +4,7 @@ Resources
 
 .. container:: lead
 
-   There are a actually a lot of online resources, here is only a small selection.
+   There are actually a lot of online resources, here is only a small selection.
 
 
 Learning
