@@ -14,4 +14,5 @@ find the answers to your questions or get the help you need.
   community
   resources
   faq
+  roadmap
   dev_guide/index
