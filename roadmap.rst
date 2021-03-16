@@ -91,10 +91,10 @@ we'd like to define a set of "primitive" Visual objects. These primitives
 would define a set of basic functionality and that interact the closest with
 the low-level OpenGL layers of VisPy. Using these primitives, users should be
 able to easily create their own, more complex, visualizations without ever
-needing to know the complexities of the underlying laters.
+needing to know the complexities of the underlying layers.
 
 See the `VisPy Wiki <https://github.com/vispy/vispy/wiki/Primitive-Visuals>`_
-for our attempt at defining these types of primities.
+for our attempt at defining these types of primitives.
 
 See the "OpenGL, Vulkan, and WebGPU" section below for why this is important.
 
