@@ -50,7 +50,7 @@ the main VisPy GitHub repository: https://github.com/vispy/vispy/
   as a pull request on GitHub. GitHub's documentation includes instructions
   on `making a pull request <https://docs.github.com/en/free-pro-team@latest/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request>`_
   if you're new to GitHub or to git in general. Please make sure to submit
-  pull requests using a **new** branch (not your fork's master branch).
+  pull requests using a **new** branch (not your fork's main branch).
   Don't be afraid to submit a pull request with only partial fixes/features.
   Pull requests can always be updated after they are created. Creating them
   early gives maintainers a chance to provide an early review of your code if
@@ -253,3 +253,28 @@ are merged in those repositories then you or the VisPy maintainers can
 update the git submodules in the main VisPy repository to point to these
 new versions. Of course, if you have any questions, feel free to ask the
 VisPy maintainers.
+
+
+Updating my fork's branch to "main"
+-----------------------------------
+
+The VisPy project has switched to using the branch name "main" as its primary
+branch. If you forked the repository before this change, you may find it
+confusing to work between your fork and the upstream VisPy repository.
+If you wish to update your fork, go to the branches page for your repository
+(ex. ``https://github.com/<yourusername>/vispy/branches``) and edit/rename
+the "master" branch to "main".
+
+On your local system, you'll also want to point to the new name as well. GitHub
+provides instructions for doing this update. For convenience they've been
+copied below:
+
+.. code-block:: bash
+
+    git branch -m master main
+    git fetch origin
+    git branch -u origin/main main
+    git remote set-head origin -a
+
+If you've configured multiple "remotes" on your system, you may need to
+change these commands with the proper remote name.

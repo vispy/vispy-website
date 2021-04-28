@@ -54,7 +54,7 @@ source_suffix = '.rst'
 # The encoding of source files.
 #source_encoding = 'utf-8-sig'
 
-# The master toctree document.
+# The main toctree document.
 master_doc = 'index'
 
 # General information about the project.
@@ -120,7 +120,7 @@ html_context = {
     "github_user": "vispy",
     # "github_repo": "vispy",
     "github_repo": "vispy-website",
-    "github_version": "master",
+    "github_version": "main",
     "doc_path": "",
 }
 
@@ -363,7 +363,7 @@ def linkcode_resolve(domain, info):
 
     fn = relpath(fn, start=dirname(vispy.__file__))
     if 'dev' in release:
-        kind = 'master'
+        kind = 'main'
     else:
         kind = 'v%s' % (vispy.__version__,)
     return "https://github.com/vispy/vispy/blob/%s/vispy/%s%s" % (  # noqa

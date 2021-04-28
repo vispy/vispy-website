@@ -56,4 +56,4 @@ How do I cite VisPy?
 --------------------
 
 See the VisPy repository for citation information:
-https://github.com/vispy/vispy/blob/master/CITATION.rst
+https://github.com/vispy/vispy/blob/main/CITATION.rst

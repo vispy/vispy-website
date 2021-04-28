@@ -5,7 +5,7 @@ News
 2020
 ----
 
-:2020/09/24: **Release!** Version 0.6.5 (`Release Notes <https://github.com/vispy/vispy/blob/master/CHANGELOG.md>`_)
+:2020/09/24: **Release!** Version 0.6.5 (`Release Notes <https://github.com/vispy/vispy/blob/main/CHANGELOG.md>`_)
 
 2019
 ----

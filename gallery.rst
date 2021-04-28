@@ -22,7 +22,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/fireworks.png
             :width: 100%
             :class: img-rounded
-            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/fireworks.py
+            :target: https://github.com/vispy/vispy/blob/main/examples/demo/gloo/fireworks.py
 
          .. container:: caption
 
@@ -35,7 +35,7 @@ Gallery
             .. raw:: html
 
                <a type="button" class="btn btn-primary btn-xs"
-               href="https://github.com/vispy/vispy/blob/master/examples/demo/gloo/fireworks.py"/>
+               href="https://github.com/vispy/vispy/blob/main/examples/demo/gloo/fireworks.py"/>
                <span class="fa fa-github"></span> Sources </a>
 
 
@@ -46,7 +46,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/galaxy.png
             :width: 100%
             :class: img-rounded
-            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/galaxy/galaxy.py
+            :target: https://github.com/vispy/vispy/blob/main/examples/demo/gloo/galaxy/galaxy.py
 
          .. container:: caption
 
@@ -59,7 +59,7 @@ Gallery
             .. raw:: html
 
                <a type="button" class="btn btn-primary btn-xs"
-               href="https://github.com/vispy/vispy/blob/master/examples/demo/gloo/galaxy/galaxy.py"/>
+               href="https://github.com/vispy/vispy/blob/main/examples/demo/gloo/galaxy/galaxy.py"/>
                <span class="fa fa-github"></span> Sources
                </a>
 
@@ -71,7 +71,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/voronoi.png
             :width: 100%
             :class: img-rounded
-            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/voronoi.py
+            :target: https://github.com/vispy/vispy/blob/main/examples/demo/gloo/voronoi.py
 
          .. container:: caption
 
@@ -84,7 +84,7 @@ Gallery
             .. raw:: html
 
                <a type="button" class="btn btn-primary btn-xs"
-               href="https://github.com/vispy/vispy/blob/master/examples/demo/gloo/voronoi.py"/>
+               href="https://github.com/vispy/vispy/blob/main/examples/demo/gloo/voronoi.py"/>
                <span class="fa fa-github"></span> Sources
                </a>
 
@@ -96,7 +96,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/high-frequency.png
             :width: 100%
             :class: img-rounded
-            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/high_frequency.py
+            :target: https://github.com/vispy/vispy/blob/main/examples/demo/gloo/high_frequency.py
 
          .. container:: caption
 
@@ -110,7 +110,7 @@ Gallery
             .. raw:: html
 
                <a type="button" class="btn btn-primary btn-xs"
-               href="https://github.com/vispy/vispy/blob/master/examples/demo/gloo/high_frequency.py">
+               href="https://github.com/vispy/vispy/blob/main/examples/demo/gloo/high_frequency.py">
                <span class="fa fa-github"></span> Sources </a>
 
 
@@ -122,7 +122,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/gloo-cloud.png
             :width: 100%
             :class: img-rounded
-            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/cloud.py
+            :target: https://github.com/vispy/vispy/blob/main/examples/demo/gloo/cloud.py
 
          .. container:: caption
 
@@ -134,7 +134,7 @@ Gallery
             .. raw:: html
 
                <a type="button" class="btn btn-primary btn-xs"
-               href="https://github.com/vispy/vispy/blob/master/examples/demo/gloo/cloud.py"/>
+               href="https://github.com/vispy/vispy/blob/main/examples/demo/gloo/cloud.py"/>
                <span class="fa fa-github"></span> Sources
                </a>
 
@@ -146,7 +146,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/mandelbrot.png
             :width: 100%
             :class: img-rounded
-            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/mandelbrot.py
+            :target: https://github.com/vispy/vispy/blob/main/examples/demo/gloo/mandelbrot.py
 
          .. container:: caption
 
@@ -159,7 +159,7 @@ Gallery
             .. raw:: html
 
                <a type="button" class="btn btn-primary btn-xs"
-               href="https://github.com/vispy/vispy/blob/master/examples/demo/gloo/mandelbrot.py"/>
+               href="https://github.com/vispy/vispy/blob/main/examples/demo/gloo/mandelbrot.py"/>
                <span class="fa fa-github"></span> Sources
                </a>
 
@@ -171,7 +171,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/grayscott.png
             :width: 100%
             :class: img-rounded
-            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/grayscott.py
+            :target: https://github.com/vispy/vispy/blob/main/examples/demo/gloo/grayscott.py
 
          .. container:: caption
 
@@ -184,7 +184,7 @@ Gallery
             .. raw:: html
 
                <a type="button" class="btn btn-primary btn-xs"
-               href="https://github.com/vispy/vispy/blob/master/examples/demo/gloo/grayscott.py"/>
+               href="https://github.com/vispy/vispy/blob/main/examples/demo/gloo/grayscott.py"/>
                <span class="fa fa-github"></span> Sources
                </a>
 
@@ -196,7 +196,7 @@ Gallery
          .. image:: _static/screenshots/thumbnails/collection-custom-lines.png
             :width: 100%
             :class: img-rounded
-            :target: https://github.com/vispy/vispy/blob/master/examples/demo/gloo/realtime_signals.py
+            :target: https://github.com/vispy/vispy/blob/main/examples/demo/gloo/realtime_signals.py
 
          .. container:: caption
 
@@ -209,5 +209,5 @@ Gallery
             .. raw:: html
 
                <a type="button" class="btn btn-primary btn-xs"
-               href="https://github.com/vispy/vispy/blob/master/examples/demo/gloo/realtime_signals.py"/>
+               href="https://github.com/vispy/vispy/blob/main/examples/demo/gloo/realtime_signals.py"/>
                <span class="fa fa-github"></span> Sources</a>

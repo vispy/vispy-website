@@ -86,7 +86,7 @@ at all times. We recommend to use the latest development version.
 
 **If you want to run the latest development version**, you can clone the
 repository to your local machine and install with ``develop`` to enable easy
-updates to latest ``master``:
+updates to latest ``main``:
 
 .. code-block:: console
 

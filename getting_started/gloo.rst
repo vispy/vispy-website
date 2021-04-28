@@ -68,7 +68,7 @@ Let's go through this code one chunk at a time:
 .. note::
 
     The above code is also available in the
-    `examples/basics/gloo/start.py <https://github.com/vispy/vispy/blob/master/examples/basics/gloo/start.py>`_
+    `examples/basics/gloo/start.py <https://github.com/vispy/vispy/blob/main/examples/basics/gloo/start.py>`_
     script.
 
 Basic Script (Alternative)
@@ -178,7 +178,7 @@ or execute itself.
 
 When we run this example we should see something like this:
 
-.. image:: https://github.com/vispy/images/raw/master/gallery/tutorial__gloo__colored_quad.png
+.. image:: https://github.com/vispy/images/raw/main/gallery/tutorial__gloo__colored_quad.png
    :width: 600
    :alt: Screenshot of examples/tutorial/gloo/colored_quad.py example script.
 
@@ -203,7 +203,7 @@ also change the drawing method used (ex. 'points' or 'lines' instead of
 .. note::
 
     The above code is also available in the
-    `examples/tutorial/gloo/colored_quad.py <https://github.com/vispy/vispy/blob/master/examples/tutorial/gloo/colored_quad.py>`_
+    `examples/tutorial/gloo/colored_quad.py <https://github.com/vispy/vispy/blob/main/examples/tutorial/gloo/colored_quad.py>`_
     script.
 
 Timers
@@ -337,7 +337,7 @@ The end result is a 2D square that rotates for every timer event.
 .. note::
 
     The above code is also available in the
-    `examples/tutorial/gloo/rotating_quad.py <https://github.com/vispy/vispy/blob/master/examples/tutorial/gloo/rotating_quad.py>`_
+    `examples/tutorial/gloo/rotating_quad.py <https://github.com/vispy/vispy/blob/main/examples/tutorial/gloo/rotating_quad.py>`_
     script.
 
 Keyboard Events
