@@ -52,6 +52,25 @@ one to do the redraw. Since many Visual objects automatically call
 do in the most performant way. Updates or requests for changes to better support
 thread-safe data updates are welcome.
 
+How to do headless rendering with VisPy?
+----------------------------------------
+
+With Xvfb: `xvfb-run -a python my_script.py`
+
+Using the osmesa or egl backend:
+```python
+import vispy
+vispy.use("osmesa")
+# or
+vispy.use("egl")
+```
+You might need to also make the `VISPY_GL_LIB` environment variable point to
+the osmesa/egl shared library, e.g.
+```
+export OSMESA_LIBRARY=~/micromamba/envs/vispy-tests/lib/libOSMesa32.so
+export VISPY_GL_LIB=$OSMESA_LIBRARY
+```
+
 How do I cite VisPy?
 --------------------
 
