@@ -86,11 +86,10 @@ Using the OSMesa (Off-Screen Mesa) backend: ::
     import vispy
     vispy.use("osmesa")
 
-You might need to also make the `VISPY_GL_LIB` environment variable point to
-the OSMesa shared library, e.g. ::
+VisPy tries to detect the OSMesa shared library, but, if needed, it can be set
+explicitly with ::
 
     export OSMESA_LIBRARY=/usr/lib/libOSMesa.so
-    export VISPY_GL_LIB=$OSMESA_LIBRARY
 
 https://mesa-docs.readthedocs.io/en/latest/osmesa.html
 
@@ -102,14 +101,13 @@ Using the EGL backend: ::
     import vispy
     vispy.use("egl")
 
-If needed, indicate VisPy where to find the appropriate EGL shared library,
-e.g. ::
+VisPy tries to detect the EGL shared library, but, if needed, it can be set
+explicitly with ::
 
-    # Choose one.
+    # Choose one, or adapt to your system.
     export EGL_LIBRARY=/usr/lib/libEGL.so
     export EGL_LIBRARY=/usr/lib/libEGL_mesa.so
     export EGL_LIBRARY=/usr/lib/libEGL_nvidia.so
-    export VISPY_GL_LIB=$EGL_LIBRARY
 
 https://en.wikipedia.org/wiki/EGL_(API)
 
