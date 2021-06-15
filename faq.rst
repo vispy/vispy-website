@@ -52,24 +52,67 @@ one to do the redraw. Since many Visual objects automatically call
 do in the most performant way. Updates or requests for changes to better support
 thread-safe data updates are welcome.
 
-How to do headless rendering with VisPy?
-----------------------------------------
+How to render headless/off-screen with VisPy?
+---------------------------------------------
 
-With Xvfb: `xvfb-run -a python my_script.py`
+There are two strategies to render without windows with VisPy:
 
-Using the osmesa or egl backend:
-```python
-import vispy
-vispy.use("osmesa")
-# or
-vispy.use("egl")
-```
+1. Use Xvfb that simulates an X server in memory without displaying windows.
+   This can be used with any VisPy backend.
+2. Use a backend that directly renders into memory buffers, e.g. OSMesa or EGL.
+
+Then, in your VisPy script, use ::
+
+    image = canvas.render()
+    import imageio
+    imageio.imwrite("rendered.png", image)
+
+to save the rendered scene to an image file.
+
+Xvfb
+^^^^
+
+Wrap the command to launch your script with ``xfvb-run``: ::
+
+    xvfb-run -a python my_script.py
+
+https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml
+
+OSMesa
+^^^^^^
+
+Using the OSMesa (Off-Screen Mesa) backend: ::
+
+    import vispy
+    vispy.use("osmesa")
+
 You might need to also make the `VISPY_GL_LIB` environment variable point to
-the osmesa/egl shared library, e.g.
-```
-export OSMESA_LIBRARY=~/micromamba/envs/vispy-tests/lib/libOSMesa32.so
-export VISPY_GL_LIB=$OSMESA_LIBRARY
-```
+the OSMesa shared library, e.g. ::
+
+    export OSMESA_LIBRARY=/usr/lib/libOSMesa.so
+    export VISPY_GL_LIB=$OSMESA_LIBRARY
+
+https://mesa-docs.readthedocs.io/en/latest/osmesa.html
+
+EGL
+^^^
+
+Using the EGL backend: ::
+
+    import vispy
+    vispy.use("egl")
+
+If needed, indicate VisPy where to find the appropriate EGL shared library,
+e.g. ::
+
+    # Choose one.
+    export EGL_LIBRARY=/usr/lib/libEGL.so
+    export EGL_LIBRARY=/usr/lib/libEGL_mesa.so
+    export EGL_LIBRARY=/usr/lib/libEGL_nvidia.so
+    export VISPY_GL_LIB=$EGL_LIBRARY
+
+https://en.wikipedia.org/wiki/EGL_(API)
+
 
 How do I cite VisPy?
 --------------------
