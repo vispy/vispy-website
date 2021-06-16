@@ -59,7 +59,8 @@ There are two strategies to render without windows with VisPy:
 
 1. Use Xvfb that simulates an X server in memory without displaying windows.
    This can be used with any VisPy backend.
-2. Use a backend that directly renders into memory buffers, e.g. OSMesa or EGL.
+2. Use a backend that directly renders into memory buffers, e.g. OSMesa or EGL
+   (`further info <https://stackoverflow.com/a/55758789>`_).
 
 Then, in your VisPy script, use ::
 
