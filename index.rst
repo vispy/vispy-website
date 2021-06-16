@@ -102,3 +102,5 @@ large datasets.
   gallery
   API <api/modules>
   news
+  Code of Conduct <https://github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.rst>
+
