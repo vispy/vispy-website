@@ -52,6 +52,67 @@ one to do the redraw. Since many Visual objects automatically call
 do in the most performant way. Updates or requests for changes to better support
 thread-safe data updates are welcome.
 
+How to render headless/off-screen with VisPy?
+---------------------------------------------
+
+There are two strategies to render without windows with VisPy:
+
+1. Use Xvfb that simulates an X server in memory without displaying windows.
+   This can be used with any VisPy backend.
+2. Use a backend that directly renders into memory buffers, e.g. OSMesa or EGL
+   (`further info <https://stackoverflow.com/a/55758789>`_).
+
+Then, in your VisPy script, use ::
+
+    image = canvas.render()
+    import imageio
+    imageio.imwrite("rendered.png", image)
+
+to save the rendered scene to an image file.
+
+Xvfb
+^^^^
+
+Wrap the command to launch your script with ``xfvb-run``: ::
+
+    xvfb-run -a python my_script.py
+
+https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml
+
+OSMesa
+^^^^^^
+
+Using the OSMesa (Off-Screen Mesa) backend: ::
+
+    import vispy
+    vispy.use("osmesa")
+
+VisPy tries to detect the OSMesa shared library, but, if needed, it can be set
+explicitly with ::
+
+    export OSMESA_LIBRARY=/usr/lib/libOSMesa.so
+
+https://mesa-docs.readthedocs.io/en/latest/osmesa.html
+
+EGL
+^^^
+
+Using the EGL backend: ::
+
+    import vispy
+    vispy.use("egl")
+
+VisPy tries to detect the EGL shared library, but, if needed, it can be set
+explicitly with ::
+
+    # Choose one, or adapt to your system.
+    export EGL_LIBRARY=/usr/lib/libEGL.so
+    export EGL_LIBRARY=/usr/lib/libEGL_mesa.so
+    export EGL_LIBRARY=/usr/lib/libEGL_nvidia.so
+
+https://en.wikipedia.org/wiki/EGL_(API)
+
+
 How do I cite VisPy?
 --------------------
 
