@@ -119,7 +119,7 @@ It is possible to render 2D visuals, such as ``ImageVisual``, with translucency
 (i.e. partial transparency, a see-through effect). Here are the key points to
 achieve this, using ``ImageVisual`` as an example:
 
-1. Set the opcity value in the alpha channel of the images: ::
+1. Set the opacity value in the alpha channel of the images: ::
   
     # A white image with integer values between 0 and 255.
     image_data1 = np.ones((200, 300, 4), dtype='uint8')
