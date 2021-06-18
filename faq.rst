@@ -112,6 +112,27 @@ explicitly with ::
 
 https://en.wikipedia.org/wiki/EGL_(API)
 
+How to achieve transparency with 2D objects?
+--------------------------------------------
+
+It is possible to render 2D visuals, such as ``ImageVisual``, with translucency
+(i.e. partial transparency, a see-through effect). To do that, you must:
+1. Enable translucency for the visuals, if not the default for the visual:
+   ``visual.set_gl_state('translucent')``.
+2. Position the visuals at different depth levels (z-levels): ::
+
+    visual1.transform = vispy.STTransform(translate=(0, 0, 1)
+    visual2.transform = vispy.STTransform(translate=(0, 0, 2)
+
+   Higher ``z`` means more at the back.
+
+3. Draw the visuals from back to front. The order can be forced with: ::
+
+    visual1.order = 2
+    visual2.order = 1
+
+   The object at the back (``visual2``) comes first in the drawing order.
+
 
 How do I cite VisPy?
 --------------------
