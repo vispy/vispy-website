@@ -116,22 +116,41 @@ How to achieve transparency with 2D objects?
 --------------------------------------------
 
 It is possible to render 2D visuals, such as ``ImageVisual``, with translucency
-(i.e. partial transparency, a see-through effect). To do that, you must:
-1. Enable translucency for the visuals, if not the default for the visual:
-   ``visual.set_gl_state('translucent')``.
-2. Position the visuals at different depth levels (z-levels): ::
+(i.e. partial transparency, a see-through effect). Here are the key points to
+achieve this, using ``ImageVisual`` as an example:
+
+1. Set the opcity value in the alpha channel of the images: ::
+  
+    # A white image with integer values between 0 and 255.
+    image_data1 = np.ones((200, 300, 4), dtype='uint8')
+    # Half translucent.
+    image_data1[..., 3] = 128
+    # A blue image with float values between 0 and 1.
+    image_data2 = np.zeros((200, 300, 4), dtype='np.float32')
+    image_data2[..., 2]  = 1.0  # Blue.
+    # A bit more translucent.
+    image_data2[..., 3] = 0.25
+    visual1 = ImageVisual(image_data1)
+    visual2 = ImageVisual(image_data2)
+
+2. Enable translucency for the visuals: ::
+
+    # This is the default for ImageVisual, so it could be skipped, but it could
+    # be needed with other types of visuals.
+    visual1.set_gl_state('translucent')
+    visual2.set_gl_state('translucent')
+
+3. Position the visuals at different depth levels (z-levels): ::
 
     visual1.transform = vispy.STTransform(translate=(0, 0, 1)
     visual2.transform = vispy.STTransform(translate=(0, 0, 2)
 
-   Higher ``z`` means more at the back.
+   A higher ``z`` value means further back.
 
-3. Draw the visuals from back to front. The order can be forced with: ::
+4. Draw the visuals from back to front. The order is forced manually with: ::
 
-    visual1.order = 2
-    visual2.order = 1
-
-   The object at the back (``visual2``) comes first in the drawing order.
+    visual2.order = 1  # Furthest, drawn first.
+    visual1.order = 2  # Closest, drawn second.
 
 
 How do I cite VisPy?
