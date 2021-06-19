@@ -125,7 +125,7 @@ Here are the key steps to achieve this with two
 :class:`~vispy.scene.visuals.Image` visual nodes in a
 :class:`~vispy.scene.canvas.SceneCanvas`:
 
-1. Set the opacity value in the alpha channel of the images: ::
+1. Set the opacity value in the alpha channel of the images::
   
     # A white image with integer values between 0 and 255.
     image_data1 = np.ones((200, 300, 4), dtype='uint8')
