@@ -73,7 +73,7 @@ to save the rendered scene to an image file.
 Xvfb
 ^^^^
 
-Wrap the command to launch your script with ``xfvb-run``: ::
+Wrap the command to launch your script with ``xfvb-run``::
 
     xvfb-run -a python my_script.py
 
@@ -82,7 +82,7 @@ https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml
 OSMesa
 ^^^^^^
 
-Using the OSMesa (Off-Screen Mesa) backend: ::
+Using the OSMesa (Off-Screen Mesa) backend::
 
     import vispy
     vispy.use("osmesa")
@@ -97,7 +97,7 @@ https://mesa-docs.readthedocs.io/en/latest/osmesa.html
 EGL
 ^^^
 
-Using the EGL backend: ::
+Using the EGL backend::
 
     import vispy
     vispy.use("egl")
