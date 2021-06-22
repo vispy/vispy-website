@@ -144,8 +144,9 @@ Here are the key steps to achieve this with two
 2. Position the visuals at different depth levels (z-levels) in the viewing
    direction::
 
-    visual1.transform = vispy.STTransform(translate=(0, 0, 1)
-    visual2.transform = vispy.STTransform(translate=(0, 0, 2)
+    from vispy.visuals import transforms
+    visual1.transform = transforms.STTransform(translate=(0, 0, 1))
+    visual2.transform = transforms.STTransform(translate=(0, 0, 2))
 
    A higher ``z`` value means further back, assuming the viewing direction is
    the ``+z`` axis, e.g. the default for a
