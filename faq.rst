@@ -142,7 +142,7 @@ Here are the key steps to achieve this with two
     visual2 = Image(image_data2)
 
 2. Position the visuals at different depth levels (z-levels) in the viewing
-   direction: ::
+   direction::
 
     visual1.transform = vispy.STTransform(translate=(0, 0, 1)
     visual2.transform = vispy.STTransform(translate=(0, 0, 2)
@@ -152,7 +152,7 @@ Here are the key steps to achieve this with two
    :class:`~vispy.scene.cameras.PanZoomCamera`.
 
 3. Draw the visuals from back to front by setting the draw
-   :obj:`~vispy.scene.node.Node.order` of the nodes manually: ::
+   :obj:`~vispy.scene.node.Node.order` of the nodes manually::
 
     visual2.order = 1  # Furthest, drawn first.
     visual1.order = 2  # Closest, drawn second.
