@@ -73,7 +73,7 @@ to save the rendered scene to an image file.
 Xvfb
 ^^^^
 
-Wrap the command to launch your script with ``xfvb-run``: ::
+Wrap the command to launch your script with ``xfvb-run``::
 
     xvfb-run -a python my_script.py
 
@@ -82,7 +82,7 @@ https://www.x.org/releases/X11R7.6/doc/man/man1/Xvfb.1.xhtml
 OSMesa
 ^^^^^^
 
-Using the OSMesa (Off-Screen Mesa) backend: ::
+Using the OSMesa (Off-Screen Mesa) backend::
 
     import vispy
     vispy.use("osmesa")
@@ -97,7 +97,7 @@ https://mesa-docs.readthedocs.io/en/latest/osmesa.html
 EGL
 ^^^
 
-Using the EGL backend: ::
+Using the EGL backend::
 
     import vispy
     vispy.use("egl")
@@ -112,6 +112,64 @@ explicitly with ::
 
 https://en.wikipedia.org/wiki/EGL_(API)
 
+How to achieve transparency with 2D objects?
+--------------------------------------------
+
+With objects that lie in a 2D plane, e.g. images, it is possible to get a
+translucent effect (i.e. partial transparency, a see-through effect) by
+positioning them at different depth levels in the viewing direction and by
+drawing the visuals from furthest to closest with the appropriate blending
+mode.
+
+Here are the key steps to achieve this with two
+:class:`~vispy.scene.visuals.Image` visual nodes in a
+:class:`~vispy.scene.canvas.SceneCanvas`:
+
+1. Set the opacity value in the alpha channel of the images::
+  
+    # A white image with integer values between 0 and 255.
+    image_data1 = np.ones((200, 300, 4), dtype='uint8')
+    # Half translucent.
+    image_data1[..., 3] = 128
+
+    # A blue image with float values between 0 and 1.
+    image_data2 = np.zeros((200, 300, 4), dtype='np.float32')
+    image_data2[..., 2]  = 1.0  # Blue.
+    # A bit more translucent.
+    image_data2[..., 3] = 0.25
+
+    visual1 = Image(image_data1)
+    visual2 = Image(image_data2)
+
+2. Position the visuals at different depth levels (z-levels) in the viewing
+   direction::
+
+    from vispy.visuals import transforms
+    visual1.transform = transforms.STTransform(translate=(0, 0, 1))
+    visual2.transform = transforms.STTransform(translate=(0, 0, 2))
+
+   A higher ``z`` value means further back, assuming the viewing direction is
+   the ``+z`` axis, e.g. the default for a
+   :class:`~vispy.scene.cameras.PanZoomCamera`.
+
+3. Draw the visuals from back to front by setting the draw
+   :obj:`~vispy.scene.node.Node.order` of the nodes manually::
+
+    visual2.order = 1  # Furthest, drawn first.
+    visual1.order = 2  # Closest, drawn second.
+
+This requires depth testing and blending enabled. An appropriate blending
+function is, for example, ``(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA)``
+with `glBlendFunc <https://docs.gl/es2/glBlendFunc>`_ in OpenGL.
+This is the default on the :class:`~vispy.scene.visuals.Image` visual node, but
+otherwise it can be set with ::
+
+    visual1.set_gl_state('translucent')
+
+which is a shortcut for ::
+
+    visual1.set_gl_state(depth_test=True, cull_face=False, blend=True,
+                         blend_func=('src_alpha', 'one_minus_src_alpha'))
 
 How do I cite VisPy?
 --------------------
