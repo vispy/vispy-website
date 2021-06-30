@@ -121,7 +121,7 @@ You can install these versions of the package by doing:
 
 .. code-block:: console
 
-    pip install -i https://test.pypi.org/simple/ vispy
+    pip install --pre -i https://test.pypi.org/simple/ vispy
 
 .. note::
 
