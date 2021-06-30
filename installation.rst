@@ -110,6 +110,25 @@ can also use this line:
 
     pip install git+https://github.com/vispy/vispy.git
 
+Via Test PyPI
+-------------
+
+The VisPy project uploads the latest development version of the package to
+test.pypi.org. This can be a good alternative to the above GitHub installation
+process if you don't have or don't want to use git.
+
+You can install these versions of the package by doing:
+
+.. code-block:: console
+
+    pip install -i https://test.pypi.org/simple/ vispy
+
+.. note::
+
+    The main portion of the version number is based on the last public
+    release of VisPy so the Test PyPI package may be smaller than when
+    the final package is released.
+
 Jupyter Notebook Extension
 --------------------------
 
