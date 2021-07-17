@@ -14,6 +14,7 @@ from datetime import date
 
 import sys
 import os
+import re
 import vispy
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -37,6 +38,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.linkcode',
               'numpydoc',
               'sphinxcontrib.apidoc',
+              'sphinx_gallery.gen_gallery',
               ]
 
 # API docs
@@ -44,6 +46,19 @@ apidoc_module_dir = "../vispy"
 apidoc_output_dir = "api"
 apidoc_excluded_paths = ["../vispy/ext"]
 apidoc_separate_modules = True
+
+# Sphinx Gallery
+from sphinx_gallery.sorting import ExplicitOrder
+sphinx_gallery_conf = {
+    'examples_dirs': '../examples',
+    'gallery_dirs': 'gallery',
+    'filename_pattern': re.escape(os.sep) + 'image',
+    'subsection_order': ExplicitOrder(['../examples/gloo',
+        '../examples/scene',
+        '../examples/plotting',
+        ]),
+    'only_warn_on_example_error': True,
+}
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

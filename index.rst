@@ -99,7 +99,7 @@ large datasets.
 .. toctree::
   :hidden:
 
-  gallery
+  gallery/index
   API <api/modules>
   news
   Code of Conduct <https://github.com/vispy/vispy/blob/main/CODE_OF_CONDUCT.md>

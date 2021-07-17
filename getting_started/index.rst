@@ -10,7 +10,7 @@ the most flexibility for fully customizing your visualization.
 The below pages are meant to provide an introduction to these interfaces and
 help guide you into what interface might be best for your experience and the
 final visualization you are looking to achieve. Additionally, the
-:doc:`../gallery` can be used for inspiration. Further low-level details can
+:doc:`../gallery/index` can be used for inspiration. Further low-level details can
 be found in the :doc:`API documentation <../api/modules>` and existing
 examples.
 
