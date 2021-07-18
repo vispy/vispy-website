@@ -10,6 +10,7 @@
 #
 # All configuration values have a default; values that are commented out
 # serve to show the default.
+from __future__ import annotations
 from datetime import date
 
 import sys
@@ -48,49 +49,48 @@ apidoc_excluded_paths = ["../vispy/ext"]
 apidoc_separate_modules = True
 
 
-def run_example_for_gallery(canvas, filename="example.png", frame_num_list=None):
-    import os
-    try:
-        import faulthandler
-        faulthandler.enable()
-    except Exception:
-        pass
-    os.environ['VISPY_IGNORE_OLD_VERSION'] = 'true'
-
-    state = {"done": False, "frame": -1, "images": []}
-    if frame_num_list is None:
-        frame_num_list = list(range(5))
-
-    def grabscreenshot(event, frames=frame_num_list, state=state):
-        if state["done"]:
-            return  # Grab only once
-        state["frame"] += 1
-        if state["frame"] in frames:
-            frames.remove(state["frame"])
-            im = canvas.render()
-            state["images"].append(im)
-        if not frames:
-            state["done"] = True
-
-    canvas.events.draw.connect(grabscreenshot)
-    with canvas as c:
-        n = 0
-        limit = 10000
-        while not state["done"] and n < limit:
-            c.update()
-            c.app.process_events()
-            n += 1
-        if n >= limit or len(frame_num_list) > 0:
-            raise RuntimeError("Could not collect image")
-        # Save
-        from vispy.io import imsave
-        imsave(filename, state["images"][0])  # Always show one image
-        if len(state["images"]) > 1:
-            import imageio  # multiple gif not properly supported yet
-            imageio.mimsave(filename[:-3] + '.gif', state["images"])
-
-
 from sphinx_gallery.scrapers import _anim_rst, optipng, figure_rst, HLIST_IMAGE_MATPLOTLIB, indent, HLIST_HEADER
+from vispy.io import imsave
+
+
+class FrameGrabber:
+    """Helper to grab a series of screenshots from the current Canvas-like object."""
+
+    def __init__(self, canvas_obj, frame_grab_list: list[int]):
+        self._canvas = canvas_obj
+        self._done = False
+        self._current_frame = -1
+        self._collected_images = []
+        self._frames_to_grab = frame_grab_list
+
+    def on_draw(self, event):
+        if self._done:
+            return  # Grab only once
+        self._current_frame += 1
+        if self._current_frame in self._frames_to_grab:
+            self._frames_to_grab.remove(self._current_frame)
+            im = self._canvas.render()
+            self._collected_images.append(im)
+        if not self._frames_to_grab:
+            self._done = True
+
+    def grab_frames(self, filename):
+        os.environ['VISPY_IGNORE_OLD_VERSION'] = 'true'
+        self._canvas.events.draw.connect(self.on_draw)
+        with self._canvas as c:
+            n = 0
+            limit = 10000
+            while not self._done and n < limit:
+                c.update()
+                c.app.process_events()
+                n += 1
+            if n >= limit or len(self._frames_to_grab) > 0:
+                raise RuntimeError("Could not collect image")
+            # Save
+            imsave(filename, self._collected_images[0])  # Always show one image
+            if len(self._collected_images) > 1:
+                import imageio  # multiple gif not properly supported yet
+                imageio.mimsave(filename[:-3] + '.gif', self._collected_images)
 
 
 class VisPyGalleryScraper:
@@ -99,7 +99,7 @@ class VisPyGalleryScraper:
     def __repr__(self):
         return self.__class__.__name__
 
-    def __call__(self, block, block_vars, gallery_conf, **kwargs):
+    def __call__(self, block, block_vars, gallery_conf):
         """Scrape Matplotlib images.
 
         Parameters
@@ -110,18 +110,13 @@ class VisPyGalleryScraper:
             Dict of block variables.
         gallery_conf : dict
             Contains the configuration of Sphinx-Gallery
-        **kwargs : dict
-            Additional keyword arguments to pass to
-            :meth:`~matplotlib.figure.Figure.savefig`, e.g. ``format='svg'``.
-            The ``format`` kwarg in particular is used to set the file extension
-            of the output file (currently only 'png', 'jpg', and 'svg' are
-            supported).
 
         Returns
         -------
         rst : str
             The ReSTructuredText that will be rendered to HTML containing
-            the images. This is often produced by :func:`figure_rst`.
+            the images. This is often produced by
+            :func:`sphinx_gallery.scrapers.figure_rst`.
 
         """
         example_fn = block_vars["src_file"]
@@ -129,10 +124,10 @@ class VisPyGalleryScraper:
         image_path_iterator = block_vars['image_path_iterator']
         canvas = self._get_canvaslike_from_globals(block_vars["example_globals"])
 
-        # TODO: Make the grabscreenshot function its own class with state
         image_rsts = []
         image_path = next(image_path_iterator)
-        run_example_for_gallery(canvas, filename=image_path, frame_num_list=frame_num_list)
+        frame_grabber = FrameGrabber(canvas, frame_num_list)
+        frame_grabber.grab_frames(image_path)
         if 'images' in gallery_conf['compress_images']:
             optipng(image_path, gallery_conf['compress_images_args'])
         # TODO: Give the image a title if possible (shows up as alt text)
@@ -149,6 +144,7 @@ class VisPyGalleryScraper:
         #     continue
         # # get fig titles
         # fig_titles = _matplotlib_fig_titles(fig)
+        # TODO: Replace with a single call to figure_rst
         rst = ''
         if len(image_rsts) == 1:
             rst = image_rsts[0]
