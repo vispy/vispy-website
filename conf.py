@@ -78,19 +78,20 @@ class FrameGrabber:
         os.environ['VISPY_IGNORE_OLD_VERSION'] = 'true'
         self._canvas.events.draw.connect(self.on_draw)
         with self._canvas as c:
-            n = 0
-            limit = 10000
-            while not self._done and n < limit:
-                c.update()
-                c.app.process_events()
-                n += 1
-            if n >= limit or len(self._frames_to_grab) > 0:
-                raise RuntimeError("Could not collect image")
-            # Save
+            self._collect_frames(c)
             imsave(filename, self._collected_images[0])  # Always show one image
             if len(self._collected_images) > 1:
                 import imageio  # multiple gif not properly supported yet
                 imageio.mimsave(filename[:-3] + '.gif', self._collected_images)
+
+    def _collect_frames(self, canvas, limit=10000):
+        n = 0
+        while not self._done and n < limit:
+            canvas.update()
+            canvas.app.process_events()
+            n += 1
+        if n >= limit or len(self._frames_to_grab) > 0:
+            raise RuntimeError("Could not collect any images")
 
 
 class VisPyGalleryScraper:
