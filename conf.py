@@ -47,6 +47,148 @@ apidoc_output_dir = "api"
 apidoc_excluded_paths = ["../vispy/ext"]
 apidoc_separate_modules = True
 
+
+def run_example_for_gallery(canvas, filename="example.png", frame_num_list=None):
+    import os
+    try:
+        import faulthandler
+        faulthandler.enable()
+    except Exception:
+        pass
+    os.environ['VISPY_IGNORE_OLD_VERSION'] = 'true'
+
+    state = {"done": False, "frame": -1, "images": []}
+    if frame_num_list is None:
+        frame_num_list = list(range(5))
+
+    def grabscreenshot(event, frames=frame_num_list, state=state):
+        if state["done"]:
+            return  # Grab only once
+        state["frame"] += 1
+        if state["frame"] in frames:
+            frames.remove(state["frame"])
+            im = canvas.render()
+            state["images"].append(im)
+        if not frames:
+            state["done"] = True
+
+    canvas.events.draw.connect(grabscreenshot)
+    with canvas as c:
+        n = 0
+        limit = 10000
+        while not state["done"] and n < limit:
+            c.update()
+            c.app.process_events()
+            n += 1
+        if n >= limit or len(frame_num_list) > 0:
+            raise RuntimeError("Could not collect image")
+        # Save
+        from vispy.io import imsave
+        imsave(filename, state["images"][0])  # Always show one image
+        if len(state["images"]) > 1:
+            import imageio  # multiple gif not properly supported yet
+            imageio.mimsave(filename[:-3] + '.gif', state["images"])
+
+
+from sphinx_gallery.scrapers import _anim_rst, optipng, figure_rst, HLIST_IMAGE_MATPLOTLIB, indent, HLIST_HEADER
+
+
+class VisPyGalleryScraper:
+    """Custom sphinx-gallery scraper to save the current Canvas to an image."""
+
+    def __repr__(self):
+        return self.__class__.__name__
+
+    def __call__(self, block, block_vars, gallery_conf, **kwargs):
+        """Scrape Matplotlib images.
+
+        Parameters
+        ----------
+        block : tuple
+            A tuple containing the (label, content, line_number) of the block.
+        block_vars : dict
+            Dict of block variables.
+        gallery_conf : dict
+            Contains the configuration of Sphinx-Gallery
+        **kwargs : dict
+            Additional keyword arguments to pass to
+            :meth:`~matplotlib.figure.Figure.savefig`, e.g. ``format='svg'``.
+            The ``format`` kwarg in particular is used to set the file extension
+            of the output file (currently only 'png', 'jpg', and 'svg' are
+            supported).
+
+        Returns
+        -------
+        rst : str
+            The ReSTructuredText that will be rendered to HTML containing
+            the images. This is often produced by :func:`figure_rst`.
+
+        """
+        example_fn = block_vars["src_file"]
+        frame_num_list = self._get_frame_list_from_source(example_fn)
+        image_path_iterator = block_vars['image_path_iterator']
+        canvas = self._get_canvaslike_from_globals(block_vars["example_globals"])
+
+        # TODO: Make the grabscreenshot function its own class with state
+        image_rsts = []
+        image_path = next(image_path_iterator)
+        run_example_for_gallery(canvas, filename=image_path, frame_num_list=frame_num_list)
+        if 'images' in gallery_conf['compress_images']:
+            optipng(image_path, gallery_conf['compress_images_args'])
+        # TODO: Give the image a title if possible (shows up as alt text)
+        fig_titles = ""
+        image_rsts.append(
+            figure_rst([image_path], gallery_conf['src_dir'], fig_titles))
+        # TODO: Handle gifs
+        # for anim in anims:
+        #     if anim._fig is fig:
+        #         image_rsts.append(_anim_rst(anim, image_path, gallery_conf))
+        #         cont = True
+        #         break
+        # if cont:
+        #     continue
+        # # get fig titles
+        # fig_titles = _matplotlib_fig_titles(fig)
+        rst = ''
+        if len(image_rsts) == 1:
+            rst = image_rsts[0]
+        elif len(image_rsts) > 1:
+            image_rsts = [re.sub(r':class: sphx-glr-single-img',
+                                 ':class: sphx-glr-multi-img',
+                                 image) for image in image_rsts]
+            image_rsts = [HLIST_IMAGE_MATPLOTLIB + indent(image, u' ' * 6)
+                          for image in image_rsts]
+            rst = HLIST_HEADER + ''.join(image_rsts)
+        return rst
+
+    def _get_frame_list_from_source(self, filename):
+        lines = open(filename, 'rb').read().decode('utf-8').splitlines()
+        for line in lines[:10]:
+            if line.startswith('# vispy:') and 'gallery' in line:
+                # Get what frames to grab
+                frames = line.split('gallery')[1].split(',')[0].strip()
+                frames = frames or '0'
+                frames = [int(i) for i in frames.split(':')]
+                if not frames:
+                    frames = [0]
+                if len(frames) > 1:
+                    frames = list(range(*frames))
+                break
+        else:
+            # no frame number hint
+            frames = [0]
+        return frames
+
+    def _get_canvaslike_from_globals(self, globals_dict):
+        # Get canvas
+        if "canvas" in globals_dict:
+            return globals_dict["canvas"]
+        if "Canvas" in globals_dict:
+            return globals_dict["canvas"]()
+        if "fig" in globals_dict:
+            return globals_dict["fig"]
+        return None
+
 # Sphinx Gallery
 from sphinx_gallery.sorting import ExplicitOrder
 sphinx_gallery_conf = {
@@ -58,7 +200,10 @@ sphinx_gallery_conf = {
         '../examples/plotting',
         ]),
     'only_warn_on_example_error': True,
+    'image_scrapers': (VisPyGalleryScraper(),),
 }
+# Let vispy.app.application:Application.run know that we are generating gallery images
+os.environ["_VISPY_RUNNING_GALLERY_EXAMPLES"] = "1"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
