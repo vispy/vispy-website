@@ -61,7 +61,7 @@ class FrameGrabber:
         self._done = False
         self._current_frame = -1
         self._collected_images = []
-        self._frames_to_grab = frame_grab_list
+        self._frames_to_grab = frame_grab_list[:]  # copy so original list is preserved
 
     def on_draw(self, event):
         if self._done:
@@ -135,20 +135,14 @@ class VisPyGalleryScraper:
         if len(frame_num_list) > 1:
             # let's make an animation
             # FUTURE: mp4 with imageio?
-            image_path = os.path.splitext(image_path) + ".gif"
+            image_path = os.path.splitext(image_path)[0] + ".gif"
             frame_grabber.save_animation(image_path)
         else:
             frame_grabber.save_frame(image_path)
         if 'images' in gallery_conf['compress_images']:
             optipng(image_path, gallery_conf['compress_images_args'])
-        # TODO: Give the image a title if possible (shows up as alt text)
-        fig_titles = ""
-        # TODO: Handle gifs
-        # for anim in anims:
-        #     if anim._fig is fig:
-        #         image_rsts.append(_anim_rst(anim, image_path, gallery_conf))
-        #         cont = True
-        #         break
+        fig_titles = ""  # alt text
+        # FUTURE: Handle non-images (ex. MP4s) with raw HTML
         return figure_rst([image_path], gallery_conf['src_dir'], fig_titles)
 
     def _get_frame_list_from_source(self, filename):
@@ -156,9 +150,9 @@ class VisPyGalleryScraper:
         for line in lines[:10]:
             if line.startswith('# vispy:') and 'gallery' in line:
                 # Get what frames to grab
-                frames = line.split('gallery')[1].split(',')[0].strip()
-                frames = frames or '0'
-                frames = [int(i) for i in frames.split(':')]
+                _frames = line.split('gallery')[1].split(',')[0].strip()
+                _frames = _frames or '0'
+                frames = [int(i) for i in _frames.split(':')]
                 if not frames:
                     frames = [0]
                 if len(frames) > 1:
@@ -184,7 +178,8 @@ from sphinx_gallery.sorting import ExplicitOrder
 sphinx_gallery_conf = {
     'examples_dirs': '../examples',
     'gallery_dirs': 'gallery',
-    'filename_pattern': re.escape(os.sep) + 'image',
+    'filename_pattern': re.escape(os.sep) + '[abc].*',
+    # 'ignore_pattern': r'',
     'subsection_order': ExplicitOrder(['../examples/gloo',
         '../examples/scene',
         '../examples/plotting',
