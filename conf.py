@@ -16,6 +16,7 @@ from datetime import date
 import sys
 import os
 import re
+import time
 import vispy
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -69,13 +70,50 @@ class FrameGrabber:
         self._current_frame += 1
         if self._current_frame in self._frames_to_grab:
             self._frames_to_grab.remove(self._current_frame)
-            im = self._canvas.render()
+            im = self._canvas.render(alpha=True)
             self._collected_images.append(im)
         if not self._frames_to_grab:
             self._done = True
 
     def collect_frames(self):
         """Show current Canvas and render and collect all frames requested."""
+        if self._is_qt_widget():
+            self._grab_qt_screenshot()
+        else:
+            self._grab_vispy_screenshots()
+
+    def _is_qt_widget(self):
+        try:
+            from PyQt5.QtWidgets import QWidget
+        except ImportError:
+            return False
+        return isinstance(self._canvas, QWidget)
+
+    def _grab_qt_screenshot(self):
+        from PyQt5.QtWidgets import QApplication
+        self._canvas.show()
+        # Qt is going to grab from the screen so we need the window on top
+        self._canvas.raise_()
+        # We need to give the GUI event loop and OS time to draw everything
+        QApplication.processEvents()
+        time.sleep(1.5)
+        QApplication.processEvents()
+        screen = QApplication.screenAt(self._canvas.pos())
+        screenshot = screen.grabWindow(int(self._canvas.windowHandle().winId()))
+        arr = self._qpixmap_to_ndarray(screenshot)
+        self._collected_images.append(arr)
+
+    def _qpixmap_to_ndarray(self, pixmap):
+        import numpy as np
+        im = pixmap.toImage()
+        size = pixmap.size()
+        width = size.width()
+        height = size.height()
+        im_bits = im.bits()
+        im_bits.setsize(height * width * 4)  # RGBA
+        return np.frombuffer(im_bits, np.uint8).reshape((height, width, 4))
+
+    def _grab_vispy_screenshots(self):
         os.environ['VISPY_IGNORE_OLD_VERSION'] = 'true'
         self._canvas.events.draw.connect(self.on_draw)
         with self._canvas as c:
@@ -127,10 +165,10 @@ class VisPyGalleryScraper:
         example_fn = block_vars["src_file"]
         frame_num_list = self._get_frame_list_from_source(example_fn)
         image_path_iterator = block_vars['image_path_iterator']
-        canvas = self._get_canvaslike_from_globals(block_vars["example_globals"])
+        canvas_or_widget = self._get_canvaslike_from_globals(block_vars["example_globals"])
 
         image_path = next(image_path_iterator)
-        frame_grabber = FrameGrabber(canvas, frame_num_list)
+        frame_grabber = FrameGrabber(canvas_or_widget, frame_num_list)
         frame_grabber.collect_frames()
         if len(frame_num_list) > 1:
             # let's make an animation
@@ -154,23 +192,42 @@ class VisPyGalleryScraper:
                 _frames = _frames or '0'
                 frames = [int(i) for i in _frames.split(':')]
                 if not frames:
-                    frames = [0]
+                    frames = [5]
                 if len(frames) > 1:
                     frames = list(range(*frames))
                 break
         else:
             # no frame number hint
-            frames = [0]
+            frames = [5]
         return frames
 
     def _get_canvaslike_from_globals(self, globals_dict):
+        qt_widget = self._get_qt_top_parent(globals_dict)
+        if qt_widget is not None:
+            return qt_widget
+
         # Get canvas
         if "canvas" in globals_dict:
             return globals_dict["canvas"]
         if "Canvas" in globals_dict:
-            return globals_dict["canvas"]()
+            return globals_dict["Canvas"]()
         if "fig" in globals_dict:
             return globals_dict["fig"]
+        return None
+
+    def _get_qt_top_parent(self, globals_dict):
+        if "QWidget" not in globals_dict and "QMainWindow" not in globals_dict:
+            return None
+
+        qmainwindow = globals_dict.get("QMainWindow")
+        qwidget = globals_dict.get("QWidget", qmainwindow)
+        all_qt_widgets = [widget for widget in globals_dict.values()
+                          if isinstance(widget, qwidget) and widget is not None]
+        all_qt_mains = [widget for widget in all_qt_widgets if isinstance(widget, qmainwindow)]
+        if all_qt_mains:
+            return all_qt_mains[0]
+        if all_qt_widgets:
+            return all_qt_widgets[0]
         return None
 
 # Sphinx Gallery
@@ -178,8 +235,7 @@ from sphinx_gallery.sorting import ExplicitOrder
 sphinx_gallery_conf = {
     'examples_dirs': '../examples',
     'gallery_dirs': 'gallery',
-    'filename_pattern': re.escape(os.sep) + '[abc].*',
-    # 'ignore_pattern': r'',
+    'filename_pattern': re.escape(os.sep) + '[abcdefghi].*',
     'subsection_order': ExplicitOrder(['../examples/gloo',
         '../examples/scene',
         '../examples/plotting',
