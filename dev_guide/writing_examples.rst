@@ -79,3 +79,18 @@ above will produce a list of ``[10, 15, 20, 25,30, 35, 40, 45]`` meaning draw
 the Canvas-like object 10 times and grab a screenshot, then 5 more times
 (15 total) and grab a screenshot, then 5 more times (20 total) and grab a
 screenshot, and so on.
+
+Specify images created by example
+---------------------------------
+
+Some examples may involve creating screenshots or animations. To tell the
+scraper to grab these files instead of trying to generate another screenshot
+specify the following frame specifier comment:
+
+.. code-block:: python
+
+    # vispy: gallery-exports animation.gif
+
+Where ``animation.gif`` is a filename relative to the example script that is
+produced by running the example. It can be any image format. Multiple
+space-separated filenames can be provided also.
