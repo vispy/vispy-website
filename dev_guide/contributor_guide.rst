@@ -80,7 +80,7 @@ Development Environment
 -----------------------
 
 See the installation instructions for different ways to install VisPy and its
-dependencies. We suggest installing VisPy :ref:`from source <dev_install>`_
+dependencies. We suggest installing VisPy :ref:`from source <dev_install>`
 if you are planning on modifying any code.
 
 Coding Style
