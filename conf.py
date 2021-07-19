@@ -52,7 +52,7 @@ from sphinx_gallery.sorting import ExplicitOrder
 sphinx_gallery_conf = {
     'examples_dirs': '../examples',
     'gallery_dirs': 'gallery',
-    'filename_pattern': re.escape(os.sep) + '[abcdefghi].*',
+    'filename_pattern': re.escape(os.sep),
     'subsection_order': ExplicitOrder(['../examples/gloo',
         '../examples/scene',
         '../examples/plotting',
