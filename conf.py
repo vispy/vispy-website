@@ -74,15 +74,12 @@ class FrameGrabber:
         if not self._frames_to_grab:
             self._done = True
 
-    def grab_frames(self, filename):
+    def collect_frames(self):
+        """Show current Canvas and render and collect all frames requested."""
         os.environ['VISPY_IGNORE_OLD_VERSION'] = 'true'
         self._canvas.events.draw.connect(self.on_draw)
         with self._canvas as c:
             self._collect_frames(c)
-            imsave(filename, self._collected_images[0])  # Always show one image
-            if len(self._collected_images) > 1:
-                import imageio  # multiple gif not properly supported yet
-                imageio.mimsave(filename[:-3] + '.gif', self._collected_images)
 
     def _collect_frames(self, canvas, limit=10000):
         n = 0
@@ -92,6 +89,13 @@ class FrameGrabber:
             n += 1
         if n >= limit or len(self._frames_to_grab) > 0:
             raise RuntimeError("Could not collect any images")
+
+    def save_frame(self, filename, frame_index=0):
+        imsave(filename, self._collected_images[frame_index])
+
+    def save_animation(self, filename):
+        import imageio  # multiple gif not properly supported yet
+        imageio.mimsave(filename, self._collected_images)
 
 
 class VisPyGalleryScraper:
@@ -125,38 +129,27 @@ class VisPyGalleryScraper:
         image_path_iterator = block_vars['image_path_iterator']
         canvas = self._get_canvaslike_from_globals(block_vars["example_globals"])
 
-        image_rsts = []
         image_path = next(image_path_iterator)
         frame_grabber = FrameGrabber(canvas, frame_num_list)
-        frame_grabber.grab_frames(image_path)
+        frame_grabber.collect_frames()
+        if len(frame_num_list) > 1:
+            # let's make an animation
+            # FUTURE: mp4 with imageio?
+            image_path = os.path.splitext(image_path) + ".gif"
+            frame_grabber.save_animation(image_path)
+        else:
+            frame_grabber.save_frame(image_path)
         if 'images' in gallery_conf['compress_images']:
             optipng(image_path, gallery_conf['compress_images_args'])
         # TODO: Give the image a title if possible (shows up as alt text)
         fig_titles = ""
-        image_rsts.append(
-            figure_rst([image_path], gallery_conf['src_dir'], fig_titles))
         # TODO: Handle gifs
         # for anim in anims:
         #     if anim._fig is fig:
         #         image_rsts.append(_anim_rst(anim, image_path, gallery_conf))
         #         cont = True
         #         break
-        # if cont:
-        #     continue
-        # # get fig titles
-        # fig_titles = _matplotlib_fig_titles(fig)
-        # TODO: Replace with a single call to figure_rst
-        rst = ''
-        if len(image_rsts) == 1:
-            rst = image_rsts[0]
-        elif len(image_rsts) > 1:
-            image_rsts = [re.sub(r':class: sphx-glr-single-img',
-                                 ':class: sphx-glr-multi-img',
-                                 image) for image in image_rsts]
-            image_rsts = [HLIST_IMAGE_MATPLOTLIB + indent(image, u' ' * 6)
-                          for image in image_rsts]
-            rst = HLIST_HEADER + ''.join(image_rsts)
-        return rst
+        return figure_rst([image_path], gallery_conf['src_dir'], fig_titles)
 
     def _get_frame_list_from_source(self, filename):
         lines = open(filename, 'rb').read().decode('utf-8').splitlines()
