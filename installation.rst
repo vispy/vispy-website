@@ -84,6 +84,8 @@ Once the python dependencies have been installed, install the latest
 proprietary drivers for your computer's GPU. Generally these drivers may be
 downloaded from the GPU manufacturer's website.
 
+.. _dev_install:
+
 Via GitHub
 ----------
 

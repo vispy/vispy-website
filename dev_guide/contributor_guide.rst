@@ -76,6 +76,13 @@ gitter channel specifically for
 create an issue on GitHub to ask a question. If you've already created a
 pull request you can comment there.
 
+Development Environment
+-----------------------
+
+See the installation instructions for different ways to install VisPy and its
+dependencies. We suggest installing VisPy :ref:`from source <dev_install>`_
+if you are planning on modifying any code.
+
 Coding Style
 ------------
 
