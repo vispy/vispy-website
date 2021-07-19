@@ -59,6 +59,8 @@ sphinx_gallery_conf = {
         ]),
     'only_warn_on_example_error': True,
     'image_scrapers': ('vispy',),
+    'reset_modules': tuple(),  # remove default matplotlib/seaborn resetters
+    'first_notebook_cell': '%gui qt',  # tell notebooks to use Qt backend
 }
 # Let vispy.app.application:Application.run know that we are generating gallery images
 os.environ["_VISPY_RUNNING_GALLERY_EXAMPLES"] = "1"
