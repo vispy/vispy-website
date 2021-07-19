@@ -143,7 +143,7 @@ class VisPyGalleryScraper:
         return self.__class__.__name__
 
     def __call__(self, block, block_vars, gallery_conf):
-        """Scrape Matplotlib images.
+        """Scrape VisPy Canvases and applications.
 
         Parameters
         ----------
