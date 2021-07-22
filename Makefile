@@ -32,7 +32,9 @@ help:
 clean:
 	rm -rf $(BUILDDIR)/*
 	-rm -f *~
-	rm -rf gallery/
+	rm -rf gallery/gloo
+	rm -rf gallery/scene
+	rm -rf gallery/plotting
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html

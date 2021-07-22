@@ -48,15 +48,10 @@ apidoc_excluded_paths = ["../vispy/ext"]
 apidoc_separate_modules = True
 
 # Sphinx Gallery
-from sphinx_gallery.sorting import ExplicitOrder
 sphinx_gallery_conf = {
-    'examples_dirs': '../examples',
-    'gallery_dirs': 'gallery',
+    'examples_dirs': ['../examples/gloo', '../examples/scene', '../examples/plotting'],
+    'gallery_dirs': ['gallery/gloo', 'gallery/scene', 'gallery/plotting'],
     'filename_pattern': re.escape(os.sep),
-    'subsection_order': ExplicitOrder(['../examples/gloo',
-        '../examples/scene',
-        '../examples/plotting',
-        ]),
     'only_warn_on_example_error': True,
     'image_scrapers': ('vispy',),
     'reset_modules': tuple(),  # remove default matplotlib/seaborn resetters

@@ -13,13 +13,35 @@ to take screenshots of it.
 The below sections describe some important points of writing an example and
 gotchas to avoid so the examples are properly included in the gallery.
 
+Using the VisPy Scraper in other projects
+-----------------------------------------
+
+It is possible for projects outside of VisPy to use the sphinx-gallery
+scraper. After following the sphinx-gallery configuration steps, include
+"vispy" as one of your ``image_scrapers`` in your ``conf.py`` configuration:
+
+.. code-block:: python
+
+    sphinx_gallery_conf = {
+        'image_scrapers': ('vispy',),
+        ...
+    }
+
+It can be used alongside other scrapers like the sphinx-gallery default
+``matplotlib`` scraper. The scraper follows all the same rules described
+below unless stated otherwise.
+
 Script Location
 ---------------
 
 Example scripts that are meant to be included in the gallery should be placed
 in one of ``examples/gloo/``, ``examples/scene/``, or ``examples/plotting/``
-directories. Sphinx-gallery will only search in these directory and only at
-the top level (no sub-directories).
+directories. Sphinx-gallery will only search in these directories and only at
+the top 2 levels (only the first sub-directories).
+
+Note this is specific to the VisPy project. Third-party libraries using the
+VisPy scraper are free to put examples wherever they configure sphinx-gallery
+to look.
 
 Canvas
 ------
@@ -44,7 +66,7 @@ top-level ``QMainWindow`` or ``QWidget`` and ignore any VisPy canvases.
 At the end of the example should be included an ``app.run()`` call where
 ``app`` **must** be a VisPy ``Application`` instance. Using a QApplication
 instance will work for basic running of the example, but currently can cause
-segmentation faults when running by sphinx-gallery. VisPy's
+segmentation faults when run by sphinx-gallery. VisPy's
 :meth:`vispy.app.application.Application.run` has special handling to not block
 execution when run by sphinx-gallery.
 
