@@ -68,8 +68,7 @@ Let's go through this code one chunk at a time:
 .. note::
 
     The above code is also available in the
-    `examples/basics/gloo/start.py <https://github.com/vispy/vispy/blob/main/examples/basics/gloo/start.py>`_
-    script.
+    :ref:`examples/gloo/start.py <sphx_glr_gallery_gloo_start.py>` script.
 
 Basic Script (Alternative)
 --------------------------
