@@ -53,6 +53,7 @@ sphinx_gallery_conf = {
     'examples_dirs': ['../examples/gloo', '../examples/scene', '../examples/plotting'],
     'gallery_dirs': ['gallery/gloo', 'gallery/scene', 'gallery/plotting'],
     'filename_pattern': re.escape(os.sep),
+    'ignore_pattern': re.escape(os.sep) + 'plotting/export.py',
     'only_warn_on_example_error': True,
     'image_scrapers': ('vispy',),
     'reset_modules': tuple(),  # remove default matplotlib/seaborn resetters
