@@ -102,6 +102,10 @@ the Canvas-like object 10 times and grab a screenshot, then 5 more times
 (15 total) and grab a screenshot, then 5 more times (20 total) and grab a
 screenshot, and so on.
 
+By default the scraper will not grab any frames. If the gallery comment is
+specified, but has no number or range specified then the first frame will be
+grabbed.
+
 Specify images created by example
 ---------------------------------
 
