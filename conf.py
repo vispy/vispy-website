@@ -48,6 +48,7 @@ apidoc_excluded_paths = ["../vispy/ext"]
 apidoc_separate_modules = True
 
 # Sphinx Gallery
+from sphinx_gallery.sorting import FileNameSortKey
 sphinx_gallery_conf = {
     'examples_dirs': ['../examples/gloo', '../examples/scene', '../examples/plotting'],
     'gallery_dirs': ['gallery/gloo', 'gallery/scene', 'gallery/plotting'],
@@ -56,6 +57,7 @@ sphinx_gallery_conf = {
     'image_scrapers': ('vispy',),
     'reset_modules': tuple(),  # remove default matplotlib/seaborn resetters
     'first_notebook_cell': '%gui qt',  # tell notebooks to use Qt backend
+    'within_subsection_order': FileNameSortKey,
 }
 # Let vispy.app.application:Application.run know that we are generating gallery images
 os.environ["_VISPY_RUNNING_GALLERY_EXAMPLES"] = "1"
