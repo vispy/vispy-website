@@ -9,6 +9,7 @@ information.
   :maxdepth: 1
 
   contributor_guide
+  writing_examples
 
 To become familiar with the low-level OpenGL Intermediate Representation
 (GLIR), it is best to start with the specification outlined in the

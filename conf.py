@@ -14,6 +14,7 @@ from datetime import date
 
 import sys
 import os
+import re
 import vispy
 
 # If extensions (or modules to document with autodoc) are in another directory,
@@ -37,6 +38,7 @@ extensions = ['sphinx.ext.autodoc',
               'sphinx.ext.linkcode',
               'numpydoc',
               'sphinxcontrib.apidoc',
+              'sphinx_gallery.gen_gallery',
               ]
 
 # API docs
@@ -44,6 +46,22 @@ apidoc_module_dir = "../vispy"
 apidoc_output_dir = "api"
 apidoc_excluded_paths = ["../vispy/ext"]
 apidoc_separate_modules = True
+
+# Sphinx Gallery
+from sphinx_gallery.sorting import FileNameSortKey
+sphinx_gallery_conf = {
+    'examples_dirs': ['../examples/gloo', '../examples/scene', '../examples/plotting'],
+    'gallery_dirs': ['gallery/gloo', 'gallery/scene', 'gallery/plotting'],
+    'filename_pattern': re.escape(os.sep),
+    'ignore_pattern': re.escape(os.sep) + 'plotting/export.py',
+    'only_warn_on_example_error': True,
+    'image_scrapers': ('vispy',),
+    'reset_modules': tuple(),  # remove default matplotlib/seaborn resetters
+    'first_notebook_cell': '%gui qt',  # tell notebooks to use Qt backend
+    'within_subsection_order': FileNameSortKey,
+}
+# Let vispy.app.application:Application.run know that we are generating gallery images
+os.environ["_VISPY_RUNNING_GALLERY_EXAMPLES"] = "1"
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

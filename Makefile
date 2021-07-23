@@ -27,15 +27,24 @@ help:
 	@echo "  linkcheck  to check all external links for integrity"
 	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
 	@echo "  publish    to publish the site on its public location"
+	@echo "  html_dev-pattern       to make standalone HTML files with select sphinx-gallery pattern (ex. make html_dev-pattern PATTERN='/a')"
 
 clean:
 	rm -rf $(BUILDDIR)/*
 	-rm -f *~
+	rm -rf gallery/gloo
+	rm -rf gallery/scene
+	rm -rf gallery/plotting
 
 html:
 	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
+
+html_dev-pattern:
+	BUILD_DEV_HTML=1 $(SPHINXBUILD) -D sphinx_gallery_conf.filename_pattern=$(PATTERN) -D sphinx_gallery_conf.run_stale_examples=True -b html $(ALLSPHINXOPTS) _build/html
+	@echo
+	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html"
 
 linkcheck:
 	$(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck
