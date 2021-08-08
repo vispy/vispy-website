@@ -146,7 +146,7 @@ Note that the 'jupyter_rfb' library uses the "remote" jupyter kernel
 (the server) to do the drawing of your visualization and then sends the
 results to the client (the browser). This means that performance of animations
 and user interactions (mouse and keyboard events) will differ depending on the
-connection speed and quality between server and client.
+connection quality between server and client.
 
 .. versionchanged:: 0.8
 
