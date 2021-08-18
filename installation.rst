@@ -13,8 +13,7 @@ Backend requirements
 
 VisPy requires at least one toolkit for opening a window and creates an OpenGL
 context. This can be done using one Qt, GLFW, SDL2, Wx, or Pyglet. You can also
-use a Jupyter notebook with WebGL for some visualizations although some visuals
-may not be possible (ex. volume rendering).
+use a Jupyter notebook with visualizations appearing inline.
 
 .. warning::
 
@@ -99,12 +98,14 @@ available in the python environment:
     # creates "vispy" folder
     git clone --recurse-submodules git://github.com/vispy/vispy.git
     cd vispy
-    # create/initialize 'doc' and 'js' directories
+    # optionally create/initialize 'doc' directories
     git submodule update --init --recursive
-    pip install -e . --no-use-pep517
+    # install the vispy package in editable/development mode
+    pip install -e .
 
 If you have cloned the repository in the past you may need to run the
 submodule command above to initialize any git submodules.
+
 To run the latest development version without cloning the repository, you
 can also use this line:
 
@@ -131,55 +132,26 @@ You can install these versions of the package by doing:
     release of VisPy so the Test PyPI package may be smaller than when
     the final package is released.
 
-Jupyter Notebook Extension
---------------------------
+Jupyter Notebook and Lab
+------------------------
 
-If you would like to use the VisPy Jupyter Notebook Widget you must first
-install the ``ipywidgets`` library and enable the extension by doing:
+If you would like to use VisPy in a Jupyter Notebook and have the
+visualizations appear inline, we recommend using the "jupyter_rfb" backend.
+This backend depends on
+`jupyter_rfb library <https://jupyter-rfb.readthedocs.io/en/latest/>`_ which
+must be installed before your jupyter notebook or jupyter lab session is
+started.
 
-.. code-block:: console
+Note that the 'jupyter_rfb' library uses the "remote" jupyter kernel
+(the server) to do the drawing of your visualization and then sends the
+results to the client (the browser). This means that performance of animations
+and user interactions (mouse and keyboard events) will differ depending on the
+connection quality between server and client.
 
-    pip install ipywidgets
-    jupyter nbextension enable --py widgetsnbextension
-    jupyter nbextension enable --py vispy
+.. versionchanged:: 0.8
 
-When using `virtualenv <https://virtualenv.pypa.io/en/stable/>`_ and working in
-an activated virtual environment, the ``--sys-prefix`` option may be required
-to enable the extension and keep the environment isolated (i.e.
-``jupyter nbextension enable --py widgetsnbextension --sys-prefix``).
-
-Note if you have an old version of the extension installed you mean need to
-manually delete it from `<python-prefix>/share/nbextensions/vispy`>
-
-If you are installing vispy from source in a "development mode" you may need
-to explicitly install the extension before enabling it (using the symlink
-option to link the extension to your active development environment):
-
-.. code-block:: console
-
-    jupyter nbextension install --symlink --py vispy --sys-prefix
-
-.. note::
-
-    The Jupyter-based backend and extension should be considered experimental
-    due to performance limitations; both by the WebGL standard and what is
-    currently implemented in vispy. Users should strongly consider these
-    limitations before using vispy for an operational WebGL application.
-
-JupyterLab
-----------
-
-To install the JupyterLab extension you need to install it explicitly with the
-following:
-
-.. code-block:: console
-
-    conda install -c conda-forge nodejs  # or some other way to have a recent node
-    jupyter labextension install @jupyter-widgets/jupyterlab-manager
-    jupyter labextension install vispy
-
-If you have a "vispy" directory in your current directory this will try to
-install from there, use `vispy@latest` instead.
+    The "jupyter_rfb" backend was added in Version 0.8 and the old
+    "ipynb_webgl" was removed.
 
 Testing installation
 --------------------
